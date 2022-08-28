@@ -1,8 +1,23 @@
-import type { Component } from 'solid-js';
+import { Component, createEffect, createSignal } from 'solid-js';
+import Nav from './components/Nav';
+
+const [username, setUsername] = createSignal('admin')
+const [locations, setLocations] = createSignal([])
+const [items, setItems] = createSignal([])
 
 const App: Component = () => {
+  createEffect(async () => {
+    const res = await fetch('')
+    setLocations(await res.json())
+  })
+
   return (
-    <p class="text-4xl text-green-700 text-center py-20">Hello tailwind!</p>
+    <div class="w-full">
+      <Nav />
+      <div class="container mx-auto">
+        <p class="text-5xl text-green-800 text-center py-20">Hello tailwind!</p>
+      </div>
+    </div>
   );
 };
 
