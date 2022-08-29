@@ -14,18 +14,16 @@ const Navigation: Component<NavMenuCard> = ({ location, items }) => {
      * Regular Menu with locationCard and itemCards
      */
     return (
-        <div class="nav flex relative items-center h-32 w-full bg-slate-500 px-4">
-            <ul>
-                <li><NavLink href="/">{ location.card }</NavLink></li>
-                <For each={items}>
-                    { (item: Item) => item.itemCard }
-                </For>
-                <li><NavLink href="">Item</NavLink></li>
-            </ul>
+        <nav class="nav flex relative items-center h-32 w-full bg-slate-500 px-4">
+            <NavLink href="/">{ location.card }</NavLink>
+            <For each={items}>
+                { (item: Item) => item.itemCard }
+            </For>
+            <NavLink href="">Item</NavLink>
             <div class="absolute right-0 mx-20">
-               Settings 
+                Settings 
             </div>
-        </div>
+        </nav>
     )
 }
 
