@@ -30,7 +30,7 @@ const App: Component = () => {
       <Navigation location={ current_location } items={ items() } />
       <div class="container outline-dashed mx-auto" style="height: calc(100% - 20em);">
         <Routes>
-          <Route path='/' element='<div></div>' />
+          <Route path='/' element='<locationView>' />
           <For each={ locations() }>
             {(location: Location) => <Route path='/${location}' element={ location.view } />}
           </For>
