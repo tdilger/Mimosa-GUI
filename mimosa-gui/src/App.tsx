@@ -15,11 +15,11 @@ const DEFAULT_USER = 'admin'
 /**
  * All locations and items fetched from api.
  */
-const [username, setUsername] = createSignal({ DEFAULT_USER })
-const [locations, setLocations] = createSignal(DEFAULT_LOCATIONS)
-const [items, setItems] = createSignal(DEFAULT_ITEMS)
+const [username, setUsername] = createSignal(DEFAULT_USER)
+export const [locations, setLocations] = createSignal(DEFAULT_LOCATIONS)
+export const [items, setItems] = createSignal(DEFAULT_ITEMS)
 
-var current_location = locations()[0]
+export var current_location = locations()[0]
 
 createEffect(async () => {
   /**
@@ -32,7 +32,7 @@ createEffect(async () => {
 const App: Component = () => {
   return (
     <div style="width: 100vw; height: 100vh;">
-      <Navigation location={ current_location } items={ items() } />
+      <Navigation />
       <div class="z-0 relative container outline-dashed mx-auto" style="width: 80%; height: calc(100% - 20em);">
         <Routes>
           <Route path='/' element={<LocationView location={current_location} />} />
