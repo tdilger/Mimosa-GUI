@@ -19,6 +19,7 @@
     "vite-plugin-solid": "^2.3.0"
   },
   "dependencies": {
+    "@solidjs/router": "^0.4.2",
     "@suid/icons-material": "^0.2.7",
     "@suid/material": "^0.5.1",
     "hammerjs": "^2.0.8",

@@ -1,17 +1,19 @@
 import { Component, For } from "solid-js"
-import { ItemType } from "../components/smart_env/items"
+import { Item } from "../components/smart_env/items"
 import { LocationProps } from "../components/smart_env/locations"
 
-const LocationView: Component<LocationProps> = ({ location }) => {
+export const LocationView: Component<LocationProps> = ({ location }) => {
     /**
      * View of location which is displayed in center.
+     * Changed by LocationMenu by switching location via LocationCard
      */
     return (
         <div id="locationView" class="text-center">
-            <h3 class="text-3xl text-green-800 text-center py-10">{ location.name }</h3>
+            <h2 class="text-3xl text-green-800 py-5">{ location.name }</h2>
             <div class="outline-dashed w-full h-auto">
+                <p>Location Image</p>
                 <For each={ location.items }>
-                    { (item: ItemType) => <p>{ item.name }</p>}
+                    { (item: Item) => <p>{ item.name }</p>}
                 </For>
             </div>
         </div>

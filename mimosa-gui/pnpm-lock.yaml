@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@solidjs/router': ^0.4.2
   '@suid/icons-material': ^0.2.7
   '@suid/material': ^0.5.1
   '@types/hammerjs': ^2.0.41
@@ -16,6 +17,7 @@ specifiers:
   vite-plugin-solid: ^2.3.0
 
 dependencies:
+  '@solidjs/router': 0.4.2_solid-js@1.5.1
   '@suid/icons-material': 0.2.7_solid-js@1.5.1
   '@suid/material': 0.5.1_solid-js@1.5.1
   hammerjs: 2.0.8
@@ -411,6 +413,14 @@ packages:
 
   /@popperjs/core/2.11.6:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
+
+  /@solidjs/router/0.4.2_solid-js@1.5.1:
+    resolution: {integrity: sha512-RswymVhqnGVHMCo/01X9wE+u98pzYZQ/b23SgjO/PK+8oTgdY1f83OrsWR1A01LieTySkCSw7nunWTi+VOQyWA==}
+    peerDependencies:
+      solid-js: ^1.3.5
+    dependencies:
+      solid-js: 1.5.1
     dev: false
 
   /@suid/base/0.2.5_solid-js@1.5.1:

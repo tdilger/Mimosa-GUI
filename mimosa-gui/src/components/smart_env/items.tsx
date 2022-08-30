@@ -1,13 +1,13 @@
 import { Component, JSX } from "solid-js"
 
-export type ItemType = {
+export class Item {
     id: string
     name: string
     img: string
 }
 
 export interface ItemProps {
-    item: ItemType
+    item: Item
 }
   
 export const ItemIcon: Component<ItemProps> = ({ item }) => {
@@ -24,33 +24,17 @@ export const ItemCard: Component<ItemProps> = ({ item }) => {
      * Card to display location in LocationMenu.
      */
     return (
-        <div class="itemCard text-center align-middle">
-            <p>{ item.name }</p>
+        <div class="card itemCard">
+            <div class="cardContent">
+                <p>{ item.name }</p>
+            </div>
         </div>
     )
 }
 
-export class Item {
-    icon: JSX.Element
-    itemCard: JSX.Element
-
-    constructor (icon: JSX.Element, itemCard: JSX.Element) {
-        this.icon = icon
-        this.itemCard = itemCard
-    }
-}
-
-const light: ItemType = {id:"1", name:"Licht", img:""}
-const plug: ItemType = {id:"2", name:"Steckdose", img:""}
-const lightIcon = <ItemIcon item={ light }/>
-const lightCard = <ItemCard item={ light }/>
-const plugIcon = <ItemIcon item={ plug }/>
-const plugCard = <ItemCard item={ plug }/>
-
+const light: Item = {id:"1", name:"Licht", img:""}
+const plug: Item = {id:"2", name:"Steckdose", img:""}
 /**
  * TODO: Create items dynamically
  */
- export const DEFAULT_ITEMS: Item[] = [
-    new Item(lightIcon, lightCard),
-    new Item(plugIcon, plugCard)
- ]
+ export const DEFAULT_ITEMS: Item[] = [light, plug]

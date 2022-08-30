@@ -1,7 +1,6 @@
-import { NavLink } from 'solid-app-router';
 import { Component, For } from 'solid-js';
 import { Item, ItemCard } from '../smart_env/items';
-import { Location } from '../smart_env/locations';
+import { Location, LocationCard } from '../smart_env/locations';
 import './navigation.scss'
 
 interface NavMenuCard {
@@ -9,20 +8,21 @@ interface NavMenuCard {
     items: Item[]
 }
 
-const Navigation: Component<NavMenuCard> = ({ location, items }) => {
+const Navigation: Component<NavMenuCard> = ( {location, items} ) => {
     /**
      * Regular Menu with locationCard and itemCards
      */
     return (
-        <nav class="nav flex relative items-center h-32 w-full bg-slate-500 px-4">
-            <NavLink href="/">{ location.card }</NavLink>
-            <For each={items}>
-                { (item: Item) => item.itemCard }
-            </For>
-            <NavLink href="">Item</NavLink>
-            <div class="absolute right-0 mx-20">
-                Settings 
-            </div>
+        <nav class="z-10 relative h-32 w-full px-10">
+            <ul class="w-full relative">
+                <li><LocationCard location={ location } /></li>
+                <For each={ items }>
+                    { (item: Item) => <li><ItemCard item={ item } /></li> }
+                </For>
+                <li class="absolute right-0 items-center">
+                    <p>Settings</p> 
+                </li>
+            </ul>
         </nav>
     )
 }
