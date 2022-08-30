@@ -11,7 +11,7 @@ const LocationMenu: Component<LocationMenuProps> = ({ locations }) => {
      * LocationMenu
      */
     return (
-        <ul class="w-full relative">
+        <ul id="locationMenu" class="w-full relative">
             <For each={ locations }>
                 { (location: Location) => <li><LocationCard location={ location } /></li> }
             </For>

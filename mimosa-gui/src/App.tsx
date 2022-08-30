@@ -5,7 +5,7 @@ import { Location, DEFAULT_LOCATIONS } from './components/smart_env/locations';
 import { DEFAULT_ITEMS } from './components/smart_env/items';
 import SpeechInput from './components/SpeechInput';
 import { LocationView } from './pages/LocationView';
-import HomeLocationView from './components/HomeLocationView';
+import HomeLocationView from './views/HomeLocationView';
 
 /**
  * TODO: Create users dynamically

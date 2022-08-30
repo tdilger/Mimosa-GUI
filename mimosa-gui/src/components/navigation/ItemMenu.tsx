@@ -9,7 +9,7 @@ interface ItemMenuProps {
 
 const ItemMenu: Component<ItemMenuProps> = ({location, items}) => {
     return (
-        <ul class="w-full relative">
+        <ul id="itemMenu" class="w-full relative">
             <li><LocationCard location={ location } /></li>
             <For each={ items }>
                 { (item: Item) => <li><ItemCard item={ item } /></li> }

@@ -24,11 +24,11 @@ export const ItemCard: Component<ItemProps> = ({ item }) => {
      * Card to display location in LocationMenu.
      */
     return (
-        <div class="card itemCard">
+        <button class="card itemCard" onclick={ () => {} }>
             <div class="cardContent">
                 <p>{ item.name }</p>
             </div>
-        </div>
+        </button>
     )
 }
 

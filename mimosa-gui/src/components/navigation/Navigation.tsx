@@ -1,27 +1,16 @@
 import { Component, createEffect, createSignal, For } from 'solid-js';
 import { current_location, items, locations } from '../../App';
-import { Item, ItemCard } from '../smart_env/items';
-import { Location, LocationCard } from '../smart_env/locations';
 import ItemMenu from './ItemMenu';
 import LocationMenu from './LocationMenu';
 import './navigation.scss'
 
-const navigation: HTMLElement = document.getElementById('mainNavigation')
-const locationMenu: HTMLElement = document.getElementById('locationMenu')
-const itemMenu = document.getElementById('itemMenu')
-
-const [menu, setMenu] = createSignal(ItemMenu.name)
+export const [locationMenuOpen, setLocationMenuOpen] = createSignal(false)
 createEffect(() => {
-    let locationMenuOpen = (menu.name == LocationMenu.name)
     if (locationMenuOpen) {
-        setMenu(ItemMenu.name)
-        locationMenu.style.visibility = "hidden"
-        itemMenu.style.visibility = "visible"
+        /** TODO: open Menu */
         return
     }
-    setMenu(LocationMenu.name)
-    locationMenu.style.visibility = "visible"
-    itemMenu.style.visibility = "hidden"
+    /** TODO: close Menu */
 })
 
 const Navigation: Component = () => {
