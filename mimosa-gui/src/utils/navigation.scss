@@ -1,9 +1,10 @@
-nav {
+#mainNavigation {
     flex-direction: row;
     overflow: hidden;
     background-color: #666;
     top: 0;
     margin-bottom: 10px;
+    height: $navHeight;
 
     > * {
         position: absolute;
@@ -21,8 +22,8 @@ nav {
         display: flex;
         align-items: center;
         text-align: center;
-        width: 120px;
-        height: 120px;
+        width: $locationCardSize;
+        height: $locationCardSize;
         margin: 0 0.5rem;
         border-style: dashed;
         border-width: 1px;
@@ -40,6 +41,7 @@ nav {
         height: 100%; 
         background-color: #777; 
         color: #fff;
+        margin: auto;
     }
 
     .cardContent {
@@ -51,11 +53,24 @@ nav {
 
     .locationCard { 
         border-radius: 15px;
+        width: $locationCardSize;
+        height: $locationCardSize;
     }
 
     .itemCard {
-        width: 110px;
-        height: 110px;
-       border-radius: 50%;
+        width: $itemCardSize;
+        height: $itemCardSize;
+        border-radius: 50%;
+    }
+
+    #settings-icon {
+        width: $itemCardSize;
+        height: $itemCardSize;
+        display: flex;
+
+        p {
+            text-align: center;
+            margin: auto;
+        }
     }
 }

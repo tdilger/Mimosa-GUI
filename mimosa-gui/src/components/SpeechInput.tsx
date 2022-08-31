@@ -1,5 +1,4 @@
 import { Component } from 'solid-js';
-import './speechInput.scss'
 
 const SpeechInput: Component = () => {
     return (

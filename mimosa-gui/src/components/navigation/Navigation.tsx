@@ -1,8 +1,8 @@
 import { Component, createEffect, createSignal, For, Match, Suspense, Switch } from 'solid-js';
-import { current_location, items, locations } from '../../App';
-import ItemMenu from './ItemMenu';
-import LocationMenu from './LocationMenu';
-import './navigation.scss'
+import { locations } from '../../pages/LocationView';
+import ItemMenu from '../menus/ItemMenu';
+import LocationMenu from '../menus/LocationMenu';
+import { settings_overlay_on } from '../menus/SettingsMenu';
 
 export const [locationMenuOpen, setLocationMenuOpen] = createSignal(false)
 createEffect(() => {
@@ -21,17 +21,20 @@ const Navigation: Component = () => {
      */
     console.log("locations: ", locations())
     return (
-        <nav id="mainNavigation" class="z-10 relative h-32 w-full px-10">
+        <nav id="mainNavigation" class="z-20 relative w-full px-10">
             <Suspense fallback={<div class="loader">Lädt...</div>}>
-                <Switch fallback={<ItemMenu location={ current_location() } />}>
+                <Switch fallback={<ItemMenu />}>
                     <Match when={ locationMenuOpen() }>
-                        <LocationMenu locations={ locations() } />
+                        <LocationMenu />
                     </Match>
                     <Match when={ !locationMenuOpen() }>
-                        <ItemMenu location={ current_location() }/>
+                        <ItemMenu />
                     </Match>
                 </Switch>
             </Suspense>
+            <div id="settings-icon" class="absolute right-6 items-center border-dashed border-2 cursor-pointer" onclick={ settings_overlay_on }>
+                <p>Settings</p> 
+            </div>
         </nav>
     )
 }

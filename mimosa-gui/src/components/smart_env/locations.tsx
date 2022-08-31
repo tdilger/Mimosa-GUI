@@ -1,8 +1,7 @@
-import { Component, For, JSX } from "solid-js"
-import { current_location, setCurrentLocation } from "../../App"
-import LocationMenu from "../navigation/LocationMenu"
+import { Component, createSignal, For, JSX } from "solid-js"
+import { current_location, setCurrentLocation } from "../../pages/LocationView"
 import { locationMenuOpen, setLocationMenuOpen } from "../navigation/Navigation"
-import { Item } from "./items"
+import { Item, item_light, item_plug } from "./items"
 
 export class Location {
     /**
@@ -14,9 +13,9 @@ export class Location {
      name: string
      width: number
      height: number
-     items: Item[]
+     items: [Item, number][]
 
-     constructor(name: string, width: number, height: number, items: Item[]) {
+     constructor(name: string, width: number, height: number, items: [Item, number][]) {
         this.name = name
         this.width = width
         this.height = height
@@ -31,32 +30,36 @@ export interface LocationProps {
     location: Location
 }
 
-export const LocationCard: Component<LocationProps> = ({ location }) => {
+export const LocationCard = (props) => {
     /**
      * Card view to display location in LocationMenu.
      */
-    console.log("location menu open: ", locationMenuOpen())
+    console.log("location menu open: ", locationMenuOpen(), " location: ", props.location)
     return (
-        <button class="card locationCard" 
-        onclick={ () => { 
-            setLocationMenuOpen(!locationMenuOpen()) 
-            setCurrentLocation()
-            } }>
-            <div class="cardContent">
-                <p>Bild</p>
-                <p>{ location.name }</p>
-            </div>
-        </button>
+        <>
+            <button class="card locationCard" 
+            onclick={ () => { 
+                setLocationMenuOpen(!locationMenuOpen()) 
+                if (props.location != props.current_location) {
+                    setCurrentLocation(props.location)
+                }
+                } }>
+                <div class="cardContent">
+                    <p>Bild</p>
+                    <p>{ props.location.name }</p>
+                </div>
+            </button>
+        </>
     )
 }
 
 /**
  * TODO: Create locations dynamically
  */
-const kitchen: Location = new Location("Küche", 3, 2, [{id:"", name:"", img:""}])
-const livingRoom: Location = new Location("Wohnzimmer", 4, 3, [{id:"", name:"", img:""}])
-const bathroom: Location = new Location("Badezimmer", 1, 2, [{id:"", name:"", img:""}])
-const bedroom: Location = new Location("Schlafzimmer", 1, 2, [{id:"", name:"", img:""}])
-const home: Location = new Location("Haus", 4, 6, [{id:"", name:"", img:""}])
+const kitchen: Location = new Location("Küche", 3, 2, [[item_light, 1]])
+const livingRoom: Location = new Location("Wohnzimmer", 4, 3, [[item_light, 2], [item_plug, 1]])
+const bathroom: Location = new Location("Badezimmer", 1, 2, [[item_light, 1], [item_plug, 2]])
+const bedroom: Location = new Location("Schlafzimmer", 1, 2, [[item_light, 2], [item_plug, 1]])
+const home: Location = new Location("Haus", 4, 6, [[item_light, 6], [item_plug, 4]])
 
  export const DEFAULT_LOCATIONS: Location[] = [ kitchen,livingRoom, bathroom, bedroom, home ]
