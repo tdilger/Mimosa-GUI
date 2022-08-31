@@ -6,10 +6,11 @@ interface LocationMenuProps {
     locations: Location[]
 }
 
-const LocationMenu: Component<LocationMenuProps> = ({ locations }) => {
+function LocationMenu<LocationMenuProps> ( { locations } ) {
     /**
      * LocationMenu
      */
+    console.log("location menu, locations: ", locations)
     return (
         <ul id="locationMenu" class="w-full relative">
             <For each={ locations }>

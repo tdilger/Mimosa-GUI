@@ -1,4 +1,5 @@
 import { Component, JSX } from "solid-js"
+import { locationMenuOpen, setLocationMenuOpen } from "../navigation/Navigation"
 
 export class Item {
     id: string
@@ -24,9 +25,11 @@ export const ItemCard: Component<ItemProps> = ({ item }) => {
      * Card to display location in LocationMenu.
      */
     return (
-        <button class="card itemCard" onclick={ () => {} }>
+        <button class="card itemCard" 
+        onclick={ () => { setLocationMenuOpen(!locationMenuOpen()) } }>
             <div class="cardContent">
-                <p>{ item.name }</p>
+                <p>item menu</p>
+                <p>{ item.name }</p>
             </div>
         </button>
     )

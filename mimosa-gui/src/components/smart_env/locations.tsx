@@ -1,4 +1,5 @@
 import { Component, For, JSX } from "solid-js"
+import { current_location, setCurrentLocation } from "../../App"
 import LocationMenu from "../navigation/LocationMenu"
 import { locationMenuOpen, setLocationMenuOpen } from "../navigation/Navigation"
 import { Item } from "./items"
@@ -34,11 +35,13 @@ export const LocationCard: Component<LocationProps> = ({ location }) => {
     /**
      * Card view to display location in LocationMenu.
      */
+    console.log("location menu open: ", locationMenuOpen())
     return (
-        <button class="card locationCard" onclick={ () => { 
-            if(!locationMenuOpen) { 
-                setLocationMenuOpen(true) 
-            } } }>
+        <button class="card locationCard" 
+        onclick={ () => { 
+            setLocationMenuOpen(!locationMenuOpen()) 
+            setCurrentLocation()
+            } }>
             <div class="cardContent">
                 <p>Bild</p>
                 <p>{ location.name }</p>

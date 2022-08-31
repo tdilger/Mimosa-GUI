@@ -19,7 +19,7 @@ const [username, setUsername] = createSignal(DEFAULT_USER)
 export const [locations, setLocations] = createSignal(DEFAULT_LOCATIONS)
 export const [items, setItems] = createSignal(DEFAULT_ITEMS)
 
-export var current_location = locations()[0]
+export const [current_location, setCurrentLocation] = createSignal(locations()[0])
 
 createEffect(async () => {
   /**
@@ -35,7 +35,7 @@ const App: Component = () => {
       <Navigation />
       <div class="z-0 relative container outline-dashed mx-auto" style="width: 80%; height: calc(100% - 20em);">
         <Routes>
-          <Route path='/' element={<LocationView location={current_location} />} />
+          <Route path='/' element={<LocationView location={current_location()} />} />
         </Routes>
       </div>
       <SpeechInput />
