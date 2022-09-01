@@ -25,8 +25,8 @@ export class Location {
  */
 const kitchen: Location = new Location("Küche", 3, 2, [[item_light, 1]])
 const livingRoom: Location = new Location("Wohnzimmer", 4, 3, [[item_light, 2], [item_plug, 1]])
-const bathroom: Location = new Location("Badezimmer", 1, 2, [[item_light, 1], [item_plug, 2]])
-const bedroom: Location = new Location("Schlafzimmer", 1, 2, [[item_light, 2], [item_plug, 1]])
-const home: Location = new Location("Haus", 4, 6, [[item_light, 6], [item_plug, 4]])
+const bathroom: Location = new Location("Badezimmer", 2, 1, [[item_light, 1], [item_plug, 2]])
+const bedroom: Location = new Location("Schlafzimmer", 2, 2, [[item_light, 2], [item_plug, 1]])
+const home: Location = new Location("Haus", 6, 4, [[item_light, 6], [item_plug, 4]])
 
  export const DEFAULT_LOCATIONS: Location[] = [ kitchen,livingRoom, bathroom, bedroom, home ]

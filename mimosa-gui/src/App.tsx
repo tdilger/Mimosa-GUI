@@ -19,14 +19,12 @@ export const [username, setUsername] = createSignal(DEFAULT_USER)
 
 const App: Component = () => {
   return (
-    <div style="width: 100vw; height: 100vh;">
+    <div class="overflow-hidden" style="width: 100vw; height: 100vh;">
       <Navigation />
       <SettingsMenu />
-      <div class="z-0 relative container outline-dashed mx-auto" style="width: 80%; height: calc(100% - 20em);">
-        <Routes>
-          <Route path='/' element={<LocationView />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path='/' element={<LocationView />} />
+      </Routes>
       <SpeechInput />
     </div>
   );

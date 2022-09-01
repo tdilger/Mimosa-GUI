@@ -1,5 +1,17 @@
-$navHeight: 8.2em;
-$settings-menu-width: 10rem;
-$settings-symbol-size: 6.4rem;
+/** Navigation */
+$navHeight: 8.2rem;
 $locationCardSize: 120px;
 $itemCardSize: 110px;
+
+/** Settings */
+$settings-menu-width: 10rem;
+$settings-symbol-size: 6.4rem;
+
+/** SpeechInput */
+$speechInputSize: 8rem;
+
+/** LocationView */
+$locationViewMarginX: 10em;
+$locationViewMarginY: 2em;
+$locationViewWidth: calc( 100% - (2 * $locationViewMarginX));
+$locationViewHeight: calc( 100% - $navHeight - $speechInputSize - (2 * $locationViewMarginY));
