@@ -1,5 +1,5 @@
 
-export class Item {
+export interface Item {
     /**
      * Container for basic item properties.
      */
@@ -7,6 +7,31 @@ export class Item {
     name: string
     img: string
 }
+
+export class Light<Item> {
+    /**
+     * Light item that can be switched on / off.
+     */
+    enabled: boolean
+    color: String
+}
+
+export class ItemOption {
+    /**
+     * Light item that can be switched on / off.
+     */
+    name: string
+    symbol_src: string
+    action: Function
+
+    constructor(name: string, symbol_src: string, action: Function) {
+        this.name = name
+        this.symbol_src = symbol_src
+        this.action = action
+    }
+}
+
+let light_options: ItemOption[] = [new ItemOption("", "", () => {})]
 
 /**
  * Default items.
