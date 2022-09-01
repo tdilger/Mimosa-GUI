@@ -1,6 +1,7 @@
 import { Component, For } from 'solid-js';
 import { locations } from '../../pages/LocationView';
-import { Location, LocationCard } from '../smart_env/locations';
+import { Location } from '../smart_env/locations';
+import { LocationCard } from '../smart_env/LocationCard';
 
 interface LocationMenuProps {
     locations: Location[]

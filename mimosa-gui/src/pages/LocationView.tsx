@@ -1,6 +1,6 @@
 import { Component, createEffect, createSignal, For } from "solid-js"
 import { DEFAULT_ITEMS, Item } from "../components/smart_env/items"
-import { DEFAULT_LOCATIONS, LocationProps } from "../components/smart_env/locations"
+import { DEFAULT_LOCATIONS } from "../components/smart_env/locations"
 
 export const [locations, setLocations] = createSignal(DEFAULT_LOCATIONS)
 export const [items, setItems] = createSignal(DEFAULT_ITEMS)
