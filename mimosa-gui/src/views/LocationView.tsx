@@ -68,8 +68,8 @@ export const LocationView: Component = () => {
         <div id="locationView" class="z-0 relative container text-center m-auto overflow-hidden outline-dashed">
             <h2 class="text-3xl py-5">{ current_location().name }</h2>
             <div id="locationDisplay" class="relative outline-dashed mx-auto" 
-            style={{'width': `${ viewWidth() }%`, 'height': `${ viewHeight() }%`}}>
-                <ItemDisplay viewport={ [viewWidth(), viewHeight()] } location={ current_location() } />
+            style={{'width': `${ viewWidth() }%`, 'height': `${ viewHeight() }%`, 'aspect-ratio': `${ current_location().width } / ${ current_location().height }` }}>
+                <ItemDisplay viewport={ {width:viewWidth(), height:viewHeight()} } location={ current_location() } />
             </div>
         </div>
     )

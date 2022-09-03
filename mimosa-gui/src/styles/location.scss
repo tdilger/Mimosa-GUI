@@ -2,6 +2,7 @@
     width: $locationViewWidth;
     height: $locationViewHeight;
     background-color: #ccc;
+    aspect-ratio: $locationViewRatio;
 }
 
 #locationDisplay {
