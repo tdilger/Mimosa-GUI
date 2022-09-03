@@ -4,14 +4,15 @@ $locationCardSize: 120px;
 $itemCardSize: 110px;
 
 /** Settings */
-$settings-menu-width: 10rem;
-$settings-symbol-size: 6.4rem;
+$settings-menu-width: 8.4rem;
+$settings-symbol-size: 90px;
 
 /** SpeechInput */
-$speechInputSize: 8rem;
+$speechInputSize: 100px;
 
 /** LocationView */
 $locationViewMarginX: 10em;
 $locationViewMarginY: 2em;
 $locationViewWidth: calc( 100% - (2 * $locationViewMarginX));
 $locationViewHeight: calc( 100% - $navHeight - $speechInputSize - (2 * $locationViewMarginY));
+$fieldSize: 50px;

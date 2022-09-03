@@ -16,8 +16,8 @@ function SettingsMenu() {
                     <li><div class="settings-symbol">Farben</div></li>
                     <li><div class="settings-symbol">Typographie</div></li>
                     <li><div class="settings-symbol">Ausschalten</div></li>
-                    <li id="impressum"><small class="settings-symbol">Impressum</small></li>
                 </ul>
+                <small class="settings-symbol mx-auto flex w-full relative align-middle justify-center">Impressum</small>
             </div>
         </div>
     )

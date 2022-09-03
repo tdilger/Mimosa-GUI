@@ -1,13 +1,16 @@
 import { Component, For } from 'solid-js';
-import { current_location } from '../../pages/LocationView';
+import { current_location } from '../../views/LocationView';
 import { Item } from '../smart_env/items';
 import { ItemCard } from '../smart_env/ItemCard'
 import { LocationCard } from '../smart_env/LocationCard';
 
 
-/** According to https://www.solidjs.com/tutorial/bindings_spreads */
-function ItemMenu() {
-    console.log("item menu, current location: ", location)
+export const ItemMenu: Component = () => {
+    /**
+     * Menu displaying itemCards in current location.
+     * ItemCards are clickable with a badge displaying the amount of the items in location
+     * With the ItemMenu a user can select various items at once
+     */
     return (
         <>
             <ul id="itemMenu" class="w-full relative">

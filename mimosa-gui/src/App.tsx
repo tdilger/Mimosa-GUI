@@ -3,8 +3,7 @@ import { Component, createEffect, createSignal, For } from 'solid-js';
 import SettingsMenu from './components/menus/SettingsMenu';
 import Navigation from './components/navigation/Navigation';
 import SpeechInput from './components/SpeechInput';
-import { LocationView } from './pages/LocationView';
-import HomeLocationView from './views/HomeLocationView';
+import { LocationView } from './views/LocationView';
 import './style.scss'
 
 /**
@@ -15,7 +14,7 @@ const DEFAULT_USER = 'admin'
 /**
  * All locations and items fetched from api.
  */
-export const [username, setUsername] = createSignal(DEFAULT_USER)
+const [username, setUsername] = createSignal(DEFAULT_USER)
 
 const App: Component = () => {
   return (

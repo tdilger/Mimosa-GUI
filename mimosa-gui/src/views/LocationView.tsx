@@ -1,28 +1,38 @@
-import { Component, createEffect, createSignal, For, onMount } from "solid-js"
-import { DEFAULT_ITEMS, Item } from "../components/smart_env/items"
+import { Component, createEffect, createSignal } from "solid-js"
+import { DEFAULT_ITEMS } from "../components/smart_env/items"
 import { DEFAULT_LOCATIONS, Location } from "../components/smart_env/locations"
+import ItemDisplay from "./ItemDisplay";
 
 export const [locations, setLocations] = createSignal(DEFAULT_LOCATIONS)
 export const [items, setItems] = createSignal(DEFAULT_ITEMS)
 
 export const [current_location, setCurrentLocation] = createSignal(locations()[0])
 
-const [viewWidth, setViewWidth] = createSignal()
-const [viewHeight, setViewHeight] = createSignal()
+/** width and height of LocationView, initialized with provisory numbers */
+const [viewWidth, setViewWidth] = createSignal(10)
+const [viewHeight, setViewHeight] = createSignal(10)
 
 createEffect(async () => {
-/**
- * fetch data from smart env api to change when locations change.
- */
-const res = await fetch('')
-setLocations(await res.json())
+    /**
+     * fetch data from smart env api to change when locations change.
+     * API format:
+     *  name: string
+     *  width: number
+     *  height: number
+     *  items: [Item, number][]
+     */
+    const res = await fetch('')
+    setLocations(await res.json())
 })
     
 createEffect(() => {
     /**
-     * Side-effect when current location changes.
+     * Side-effects when current location changes.
+     * Change location field by size.
+     * 
+     * TODO: Probably replace with createMemo() ?
      */
-     calcLocationSize(current_location())
+    calcLocationSize(current_location())
 })
 
 function calcLocationSize(location: Location) {
@@ -33,8 +43,9 @@ function calcLocationSize(location: Location) {
      * height is intended to fill the view (25em) apart from width equally scaled is above 100%
      * In this case width is set to 70em (which replicates 100% of the view) and height scaled accordingly
      */
+    console.log("calc location size again...")
     let max_view_width: number = 70
-    let max_view_height: number = 25
+    let max_view_height: number = 26
 
     let scale_factor = max_view_height / location.height
     let view_width = location.width * scale_factor
@@ -57,12 +68,9 @@ export const LocationView: Component = () => {
     return (
         <div id="locationView" class="z-0 relative container text-center m-auto overflow-hidden outline-dashed">
             <h2 class="text-3xl py-5">{ current_location().name }</h2>
-            <div id="locationDisplay" class="outline-dashed mx-auto" 
+            <div id="locationDisplay" class="relative outline-dashed mx-auto" 
             style={{'width': `${ viewWidth() }em`, 'height': `${ viewHeight() }em`}}>
-                <p>Location Image</p>
-                <For each={ current_location().items }>
-                    { (item: [Item, number]) => <p>{ item[0].name }</p>}
-                </For>
+                <ItemDisplay viewport={ [viewWidth(), viewHeight()] } location={ current_location() } />
             </div>
         </div>
     )
