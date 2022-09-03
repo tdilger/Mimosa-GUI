@@ -38,14 +38,13 @@ createEffect(() => {
 function calcLocationSize(location: Location) {
     /**
      * Calculate location size to fit into LocationView.
-     * @returns width and height in em of view
+     * @returns width and height in % of view
      * Either width or height should be 100% of the view and the other <=100% accordingly
-     * height is intended to fill the view (25em) apart from width equally scaled is above 100%
-     * In this case width is set to 70em (which replicates 100% of the view) and height scaled accordingly
+     * height is intended to fill the view apart from width equally scaled is above 100%
+     * In this case width is set to 100% of the view and height scaled accordingly
      */
-    console.log("calc location size again...")
-    let max_view_width: number = 70
-    let max_view_height: number = 26
+    let max_view_width: number = 100
+    let max_view_height: number = 100
 
     let scale_factor = max_view_height / location.height
     let view_width = location.width * scale_factor
@@ -69,7 +68,7 @@ export const LocationView: Component = () => {
         <div id="locationView" class="z-0 relative container text-center m-auto overflow-hidden outline-dashed">
             <h2 class="text-3xl py-5">{ current_location().name }</h2>
             <div id="locationDisplay" class="relative outline-dashed mx-auto" 
-            style={{'width': `${ viewWidth() }em`, 'height': `${ viewHeight() }em`}}>
+            style={{'width': `${ viewWidth() }%`, 'height': `${ viewHeight() }%`}}>
                 <ItemDisplay viewport={ [viewWidth(), viewHeight()] } location={ current_location() } />
             </div>
         </div>

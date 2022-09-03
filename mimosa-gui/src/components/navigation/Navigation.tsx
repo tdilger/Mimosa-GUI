@@ -1,7 +1,7 @@
 import { Component, createSignal, Match, Suspense, Switch } from 'solid-js';
 import ItemMenu from '../menus/ItemMenu';
 import LocationMenu from '../menus/LocationMenu';
-import { settings_overlay_on } from '../menus/SettingsMenu';
+import { settings_overlay_on } from '../menus/settings_menu/SettingsMenu';
 
 export const [locationMenuOpen, setLocationMenuOpen] = createSignal(false)
 

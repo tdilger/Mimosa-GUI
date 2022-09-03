@@ -1,6 +1,6 @@
 import { Route, Routes } from '@solidjs/router';
-import { Component, createEffect, createSignal, For } from 'solid-js';
-import SettingsMenu from './components/menus/SettingsMenu';
+import { Component, createSignal } from 'solid-js';
+import SettingsMenu from './components/menus/settings_menu/SettingsMenu';
 import Navigation from './components/navigation/Navigation';
 import SpeechInput from './components/SpeechInput';
 import { LocationView } from './views/LocationView';
