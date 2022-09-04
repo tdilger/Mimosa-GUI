@@ -5,7 +5,7 @@ $itemCardSize: 110px;
 
 /** Settings */
 $settings-menu-width: 8.4rem;
-$settings-symbol-size: 90px;
+$settings-symbol-size: 100px;
 
 /** SpeechInput */
 $speechInputSize: 100px;
@@ -13,7 +13,7 @@ $speechInputSize: 100px;
 /** LocationView */
 $locationViewMarginX: 10em;
 $locationViewMarginY: 2em;
-$locationViewRatio: 2 / 1;
-$locationViewWidth: calc( 100% - (2 * $locationViewMarginX));
-$locationViewHeight: calc( 100% - $navHeight - $speechInputSize - (2 * $locationViewMarginY));
+$locationViewRatio: '2 / 1';
+$locationViewWidth: calc( 100% - (2 * $locationViewMarginX) );
+$locationViewHeight: calc( 100% - $navHeight - $speechInputSize - (2 * $locationViewMarginY) );
 $fieldSize: 50px;

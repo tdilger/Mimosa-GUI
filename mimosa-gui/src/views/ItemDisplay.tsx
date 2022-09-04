@@ -82,16 +82,17 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
     })
     
     return (
-        <div id="itemDisplay" class="absolute top-0" 
-        style={{'width': `${ props.viewport.width }%`, 'height': `${ props.viewport.height }%`,
+        <div id="itemDisplay" class="absolute top-0 bg-blue m-1" 
+        style={{'width': `${ props.viewport.width }em`, 'height': `${ props.viewport.height }em`,
         'display': 'grid', 
-        'grid-template-columns': `repeat(auto-fill, ${ Field.FIELD_SIZE }rem`, 
-        'grid-template-rows': `repeat(auto-fill, ${ Field.FIELD_SIZE }rem`}}>
+        'grid-template-columns': `repeat(auto-fill, ${ Field.FIELD_SIZE }em`, 
+        'grid-template-rows': `repeat(auto-fill, ${ Field.FIELD_SIZE }em`,
+        'gap': `0.1em`}}>
             <For each={fields()}>
                 { (row_fields: Field[], i) => 
                 <For each={row_fields}>
                     {(field: Field, j) => 
-                    <div class="field">i: {i()}, j: {j()}</div>
+                    <div class="field">i: {i()}, j: {j()} </div>
                     }
                 </For> }
             </For>
