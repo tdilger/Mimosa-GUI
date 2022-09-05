@@ -82,8 +82,8 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
     })
     
     return (
-        <div id="itemDisplay" class="absolute top-0 bg-blue m-1" 
-        style={{'width': `${ props.viewport.width }em`, 'height': `${ props.viewport.height }em`,
+        <div id="itemDisplay" class="absolute top-0 bg-blue" 
+        style={{'width': `100%`, 'height': `100%`,
         'display': 'grid', 
         'grid-template-columns': `repeat(auto-fill, ${ Field.FIELD_SIZE }em`, 
         'grid-template-rows': `repeat(auto-fill, ${ Field.FIELD_SIZE }em`,
