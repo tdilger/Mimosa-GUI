@@ -44,7 +44,7 @@ function calcLocationSize(location: Location) {
      * In this case width is set to 100% of the view and height scaled accordingly
      */
     let max_view_width: number = 100
-    let max_view_height: number = 100
+    let max_view_height: number = 100 * Location.VIEW_RATIO
 
     let scale_factor = max_view_height / location.height
     let view_width = location.width * scale_factor
@@ -54,7 +54,6 @@ function calcLocationSize(location: Location) {
         view_width = max_view_width
         view_height = location.height * scale_factor
     }
-
     setViewWidth(view_width)
     setViewHeight(view_height)
 }

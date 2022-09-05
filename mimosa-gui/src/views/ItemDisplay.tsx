@@ -90,7 +90,7 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
     const [items, setItems] = createSignal(current_location().items)
 
     /** Field size adjusted by size of location. */
-    const [field_size, set_field_size] = createSignal((1/(current_location().width)*2) * Field.FIELD_SIZE)
+    const [field_size, set_field_size] = createSignal(Field.FIELD_SIZE)
 
     /** Amount of fields to be displayed. */
     const [row_field_no, set_row_field_no] = createSignal(current_location().width * Location.FIELDS_PER_UNIT)
@@ -100,12 +100,16 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
         return createFieldMatrix(row_field_no(), column_field_no());
     })
 
+    function on_location_change(location: Location) {
+        set_row_field_no(location.width * Location.FIELDS_PER_UNIT);
+        set_column_field_no(location.height * Location.FIELDS_PER_UNIT)
+        set_field_size((1/(1.2^location.width)) * Field.FIELD_SIZE);
+    }
+
     createEffect(() => {
         /** Location changed. */
         console.log("viewport: ", props.viewport);
-        set_row_field_no(current_location().width * Location.FIELDS_PER_UNIT);
-        set_column_field_no(current_location().height * Location.FIELDS_PER_UNIT)
-        set_field_size((1/current_location().width) * Field.FIELD_SIZE);
+        on_location_change(current_location())
     })
 
     return (

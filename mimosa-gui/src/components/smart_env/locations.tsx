@@ -10,6 +10,9 @@ export class Location {
      /** Amount of fields to be displayed in a location unit (e.g. 1x1 bathroom)*/
      static readonly FIELDS_PER_UNIT = 3
 
+     /** Defined in css as well, used to set aspect ratio of location view. */
+     static readonly VIEW_RATIO = 2.8
+
      name: string
      width: number
      height: number
