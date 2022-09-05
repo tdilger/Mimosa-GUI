@@ -7,6 +7,7 @@ import { current_location } from './LocationView';
 class Decoration {
     /**
      * Container for decoration images that can be placed on fields.
+     * Used for better recognition of the current location
      */
      id: string
      name: string
@@ -26,7 +27,9 @@ export class Field {
      * Scale down by factor 1/(location.width) with 1/10 * FIELD_SIZE as smallest scale of field
      */
     static readonly FIELD_SIZE = 100
-    static readonly FIELD_GAP = 12
+
+    /** Gap (x, y) between fields in px */
+    static readonly FIELD_GAP = 6
 
     pos: Position
     object_on: object | {}
@@ -43,7 +46,7 @@ export class Field {
 }
 
 function createFields(fields: Field[][]): JSX.Element {
-    /** Fields to be allocated given location view size. */
+    /** JSX representation of the field matrix. */
     
     return <For each={fields}>
                 { (row_fields: Field[], i) => 
@@ -62,9 +65,9 @@ function createFieldMatrix(no_rows: number, no_columns: number): Field[][] {
      */
     console.log("createFieldMatrix - no rows: ", no_rows, " columns: ", no_columns)
     var fields: Field[][] = []
-    for(let i=0; i<no_columns; ++i) {
+    for(let i=0; i<no_rows; ++i) {
         fields[i] = []
-        for(let j=0; j<no_rows; ++j) {
+        for(let j=0; j<no_columns; ++j) {
             let pos: Position = {x:i, y:j}
             fields[i][j] = new Field(pos)
         }
@@ -96,14 +99,16 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
     const [row_field_no, set_row_field_no] = createSignal(current_location().width * Location.FIELDS_PER_UNIT)
     const [column_field_no, set_column_field_no] = createSignal(current_location().height * Location.FIELDS_PER_UNIT)
 
+    /** Create new fieldMatrix when row or column no changes. */
     const fields = createMemo(() => {
         return createFieldMatrix(row_field_no(), column_field_no());
     })
 
+    /** Refresh row and column no. and scale field size according to location size. */
     function on_location_change(location: Location) {
-        set_row_field_no(location.width * Location.FIELDS_PER_UNIT);
-        set_column_field_no(location.height * Location.FIELDS_PER_UNIT)
-        set_field_size((1/(1.2^location.width)) * Field.FIELD_SIZE);
+        set_row_field_no(location.height * Location.FIELDS_PER_UNIT)
+        set_column_field_no(location.width * Location.FIELDS_PER_UNIT)
+        set_field_size( 100 / row_field_no() )
     }
 
     createEffect(() => {
@@ -117,9 +122,9 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
         style={{
         'aspect-ratio': `${ current_location().width / current_location().height}`,
         'display': 'grid', 
-        'grid-template-columns': `repeat(${ row_field_no() }, ${ field_size() }px`, 
-        'grid-template-rows': `repeat(${ column_field_no() }, ${ field_size() }px`,
-        'gap': `${ Field.FIELD_GAP }px ${ Field.FIELD_GAP }px`}}>
+        'grid-template-rows': `repeat(${ row_field_no() }, calc(100% / ${ column_field_no() } - ${ Field.FIELD_GAP }px))`, 
+        'grid-template-columns': `repeat(${ column_field_no() }, calc(100% / ${ column_field_no() } - (3 * ${ Field.FIELD_GAP }px)))`,
+        'gap': `${ Field.FIELD_GAP }px`}}>
             { createFields( fields() ) }
         </div>
     )
