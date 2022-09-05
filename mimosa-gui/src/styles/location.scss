@@ -1,26 +1,26 @@
 #locationView {
-    width: $locationViewWidth;
-    height: $locationViewHeight;
+    max-height: calc(100% - $navHeight - $speechInputSize - 4em);
+    max-width: 80%;
     background-color: #ccc;
-    aspect-ratio: $locationViewRatio;
+    aspect-ratio: auto $locationViewRatio;
 }
 
 #locationDisplay {
     background-color: rgba(60,0,60,0.2);
     max-width: 100%;
     max-height: 100%;
+    aspect-ratio: $locationViewRatio;
 }
 
 #itemDisplay {
     justify-items: center;
     align-items: center;
-
-    div {
-        border-width: 1px;
-        border-style: dashed;
-    }
+    max-width: 100%;
+    max-height: 100%;
 
     .field {
+        border-width: 1px;
+        border-style: dashed;
         aspect-ratio: 1 / 1;
     }
 }

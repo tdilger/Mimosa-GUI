@@ -13,7 +13,7 @@ $speechInputSize: 100px;
 /** LocationView */
 $locationViewMarginX: 10em;
 $locationViewMarginY: 2em;
-$locationViewRatio: '2 / 1';
+$locationViewRatio: 2.8 / 1;
 $locationViewWidth: calc( 100% - (2 * $locationViewMarginX) );
 $locationViewHeight: calc( 100% - $navHeight - $speechInputSize - (2 * $locationViewMarginY) );
 $fieldSize: 50px;
