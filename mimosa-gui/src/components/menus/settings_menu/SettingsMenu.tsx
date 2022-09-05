@@ -1,3 +1,4 @@
+import { handle_color_settings, handle_typography_settings, handle_user_settings, power_off } from "./SettingOptions";
 
 export function settings_overlay_on() {
     document.getElementById("overlay").style.display = "block";
@@ -13,10 +14,10 @@ function SettingsMenu() {
             <div id="overlay-background" class="w-full h-full z-10" onclick={ settings_overlay_off }/>
             <div id="settings-menu" class="z-20">
                 <ul>
-                    <li><div class="settings-symbol">Benutzer</div></li>
-                    <li><div class="settings-symbol">Farben</div></li>
-                    <li><div class="settings-symbol">Typographie</div></li>
-                    <li><div class="settings-symbol">Ausschalten</div></li>
+                    <li onClick={ handle_user_settings }><div class="settings-symbol">Benutzer</div></li>
+                    <li onClick={ handle_color_settings }><div class="settings-symbol">Farben</div></li>
+                    <li onClick={ handle_typography_settings}><div class="settings-symbol">Typographie</div></li>
+                    <li onClick={ power_off }><div class="settings-symbol">Ausschalten</div></li>
                 </ul>
                 <small class="settings-symbol mx-auto flex w-full relative align-middle justify-center">Impressum</small>
             </div>
