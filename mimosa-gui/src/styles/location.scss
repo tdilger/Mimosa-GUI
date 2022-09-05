@@ -3,6 +3,10 @@
     max-width: 80%;
     background-color: #ccc;
     aspect-ratio: auto $locationViewRatio;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #locationDisplay {
