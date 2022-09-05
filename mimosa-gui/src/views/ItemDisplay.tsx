@@ -122,7 +122,7 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
         style={{
         'aspect-ratio': `${ current_location().width / current_location().height}`,
         'display': 'grid', 
-        'grid-template-rows': `repeat(${ row_field_no() }, calc(100% / ${ column_field_no() } - ${ Field.FIELD_GAP }px))`, 
+        'grid-template-rows': `repeat(${ row_field_no() }, calc(100% / ${ row_field_no() } - ${ Field.FIELD_GAP }px))`, 
         'grid-template-columns': `repeat(${ column_field_no() }, calc(100% / ${ column_field_no() } - (3 * ${ Field.FIELD_GAP }px)))`,
         'gap': `${ Field.FIELD_GAP }px`}}>
             { createFields( fields() ) }
