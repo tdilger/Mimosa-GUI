@@ -7,6 +7,9 @@ export class Location {
      * @property width, height: size of the location (e.g. 3 x 4) set by standard values
      * @property items: items located in the location (e.g. 3 lights, 1 power plug)
      */
+     /** Amount of fields to be displayed in a location unit (e.g. 1x1 bathroom)*/
+     static readonly FIELDS_PER_UNIT = 3
+
      name: string
      width: number
      height: number
