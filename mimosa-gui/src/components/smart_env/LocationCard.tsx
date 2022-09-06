@@ -14,12 +14,11 @@ export const LocationCard: Component<LocationProps> = (props) => {
     /**
      * Card view to display location in LocationMenu.
      */
-    console.log("location menu open: ", locationMenuOpen(), " location: ", props.location)
     return (
         <>
             <button class="card locationCard" 
             onclick={ () => { 
-                setLocationMenuOpen(!locationMenuOpen()) 
+                setLocationMenuOpen((previousOpen) => !previousOpen) 
                 if (props.location != current_location()) {
                     setCurrentLocation(props.location)
                 }

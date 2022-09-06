@@ -1,8 +1,10 @@
-import { Component, JSX } from 'solid-js'
-import { locationMenuOpen, setLocationMenuOpen } from '../navigation/Navigation'
+import { Component, createSignal, JSX } from 'solid-js'
 import Badge, { BadgeProps } from '@suid/material/Badge'
 import styled from "@suid/system/styled";
 import { Item } from "./items"
+import ItemCardMenu from '../menus/ItemCardMenu';
+import Popper from "@suid/material/Popper";
+import Slide from '@suid/material/Slide';
 
 export interface ItemProps {
     item: Item
@@ -53,17 +55,37 @@ export const ItemCard = ( props ) => {
         },
       }))
 
+    function open_item_card_menu() {
+
+    }
+
+    const [open, setOpen] = createSignal(false);
+    const [anchorEl, setAnchorEl] = createSignal<HTMLButtonElement | null>(null);
+    const canBeOpen = () => open() && !!anchorEl();
+    const id = () => (canBeOpen() ? "transition-popper" : undefined);
+
     return (
-        <ItemCardBadge badgeContent={props.amount} color="primary" 
-        anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
-            <button class="card itemCard" 
-            onclick={ () => { setLocationMenuOpen(false) } }>
-                
+        <>
+            <ItemCardBadge badgeContent={props.amount} color="primary" 
+            anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
+                <button class="card itemCard"
+                type="button"
+                onClick={(event) => {
+                    console.log("clicked ", props.item.name, " anchorEL", anchorEl());
+                    setAnchorEl(event.currentTarget);
+                    setOpen((previousOpen) => !previousOpen);
+                    } }>
                     <div class="cardContent">
                         <ItemIcon item={ props.item } />
                         <p>{ props.item.name }</p>
                     </div>
-            </button>
-        </ItemCardBadge>
+                </button>
+            </ItemCardBadge>
+            <Popper id={id()} open={open()} anchorEl={anchorEl()}>
+                <Slide direction="down" in={open()}>
+                    <ItemCardMenu item_name={ props.item.name } />
+                </Slide>
+            </Popper>
+        </>
     )
 }
