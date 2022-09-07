@@ -2,7 +2,7 @@ import { Component, createSignal } from 'solid-js'
 import Badge, { BadgeProps } from '@suid/material/Badge'
 import styled from "@suid/system/styled";
 import { Item } from "./items"
-import ItemCardMenu from '../menus/ItemCardMenu';
+import ItemCardMenu from '../navigation/menus/ItemCardMenu';
 import Slide from '@suid/material/Slide';
 import CardMedia from '@suid/material/CardMedia';
 import Popover from '@suid/material/Popover';

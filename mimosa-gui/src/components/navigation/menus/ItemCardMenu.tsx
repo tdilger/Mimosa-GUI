@@ -5,8 +5,8 @@ import CardMedia from "@suid/material/CardMedia";
 import Typography from "@suid/material/Typography";
 import Switch from "@suid/material/Switch";
 import { Component, For, createSignal } from "solid-js";
-import { ItemOption } from "../smart_env/ItemOptions";
-import { Item } from "../smart_env/items";
+import { ItemOption } from "../../smart_env/ItemOptions";
+import { Item } from "../../smart_env/items";
 import Divider from "@suid/material/Divider";
 
 

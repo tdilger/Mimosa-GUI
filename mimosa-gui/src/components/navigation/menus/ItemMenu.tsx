@@ -1,8 +1,8 @@
 import { Component, For } from 'solid-js';
-import { Item } from '../smart_env/items';
-import { ItemCard } from '../smart_env/ItemCard'
-import { LocationCard } from '../smart_env/LocationCard';
-import { current_location } from '../../views/LocationView';
+import { current_location } from '../../../views/LocationView';
+import { ItemCard } from '../../smart_env/ItemCard';
+import { Item } from '../../smart_env/items';
+import { LocationCard } from '../../smart_env/LocationCard';
 
 
 export const ItemMenu: Component = () => {

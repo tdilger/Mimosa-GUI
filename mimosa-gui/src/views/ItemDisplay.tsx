@@ -4,7 +4,7 @@ import { Location } from '../components/smart_env/locations';
 import { Position, Viewport } from '../utils/layout';
 import { current_location } from './LocationView';
 
-class Decoration {
+export class Decoration {
     /**
      * Container for decoration images that can be placed on fields.
      * Used for better recognition of the current location
