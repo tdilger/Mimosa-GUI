@@ -1,33 +1,44 @@
-import { Component, createSignal, JSX } from 'solid-js'
+import { Component, createSignal } from 'solid-js'
 import Badge, { BadgeProps } from '@suid/material/Badge'
 import styled from "@suid/system/styled";
 import { Item } from "./items"
 import ItemCardMenu from '../menus/ItemCardMenu';
-import Popper from "@suid/material/Popper";
 import Slide from '@suid/material/Slide';
+import CardMedia from '@suid/material/CardMedia';
+import Popover from '@suid/material/Popover';
 
 export interface ItemProps {
-    item: Item
+    item_type: Item.Type
 }
   
-export const ItemIcon: Component<ItemProps> = ({ item }) => {
+export const ItemIcon: Component<ItemProps> = ( props ) => {
     /**
      * Display item icon (light, power plugger...).
      */
-    let img_alt = "Symbol " + item.name
-    let icon_src = item.img
+    console.log("icon item type: ", props.item_type)
+    let { type, img, options } = Item.ItemMapper(props.item_type)
+    let img_alt = "Symbol " + type
     return (
         <div class="ItemIcon">
-            <img src={ icon_src } alt={ img_alt } />
+            <CardMedia
+              component="img"
+              image={ img }
+              alt={ img_alt }
+            />
         </div>
     )
 }
 
-export const ItemCard = ( props ) => {
+interface ItemCardProps {
+    item_type: Item.Type
+    items: Item[]
+}
+
+export const ItemCard: Component<ItemCardProps> = ( props ) => {
     /**
      * Card to display item in itemMenu.
-     * @param props.item: item the card should display by icon
-     * @param props.amount: amount of items to be displayed as a small badge
+     * @param props.item_type: type of item the card should display by icon img
+     * @param props.items: list of items (length to be displayed as a small badge)
      */
 
     /**
@@ -40,6 +51,8 @@ export const ItemCard = ( props ) => {
     let d = 2
     let r_c = 2
     let dist_edge: number = p + (1/2 * d - r_c);
+
+    console.log("itemcard, item: ", props.item_type, " amount: ", props.items.length)
 
     const ItemCardBadge = styled(Badge)<BadgeProps>(() => ({
         /** 
@@ -55,37 +68,43 @@ export const ItemCard = ( props ) => {
         },
       }))
 
-    function open_item_card_menu() {
-
-    }
-
-    const [open, setOpen] = createSignal(false);
+    /** open and anchor signals to open ItemCardMenu at proper place. */
+    const open = () => Boolean(anchorEl());
     const [anchorEl, setAnchorEl] = createSignal<HTMLButtonElement | null>(null);
     const canBeOpen = () => open() && !!anchorEl();
-    const id = () => (canBeOpen() ? "transition-popper" : undefined);
+    const id = () => (canBeOpen() ? "transition-popover" : undefined);
 
+    const handleClick = (
+        event: MouseEvent & { currentTarget: HTMLButtonElement }
+      ) => {
+        setAnchorEl(event.currentTarget);
+      };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    
+    console.log( "card items: ", props.items )
+    const item_type = props.item_type
+    const items = props.items
     return (
         <>
-            <ItemCardBadge badgeContent={props.amount} color="primary" 
+            <ItemCardBadge badgeContent={ items.length } color="primary" 
             anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
                 <button class="card itemCard"
                 type="button"
-                onClick={(event) => {
-                    console.log("clicked ", props.item.name, " anchorEL", anchorEl());
-                    setAnchorEl(event.currentTarget);
-                    setOpen((previousOpen) => !previousOpen);
-                    } }>
+                onClick={ handleClick }>
                     <div class="cardContent">
-                        <ItemIcon item={ props.item } />
-                        <p>{ props.item.name }</p>
+                        <ItemIcon item_type={ item_type } />
                     </div>
                 </button>
             </ItemCardBadge>
-            <Popper id={id()} open={open()} anchorEl={anchorEl()}>
-                <Slide direction="down" in={open()}>
-                    <ItemCardMenu item_name={ props.item.name } />
+            <Popover id={id()} open={open()} onClose={handleClose} 
+            anchorEl={anchorEl()} anchorOrigin={{ vertical: "bottom", horizontal: "left"}}>
+                <Slide direction="down" in={open()} container={anchorEl()}>
+                    <ItemCardMenu item_type={ item_type } items={ items } />
                 </Slide>
-            </Popper>
+            </Popover>
         </>
     )
 }

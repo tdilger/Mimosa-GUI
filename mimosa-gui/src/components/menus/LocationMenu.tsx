@@ -1,7 +1,7 @@
 import { Component, For } from 'solid-js';
-import { locations } from '../../views/LocationView';
 import { Location } from '../smart_env/locations';
 import { LocationCard } from '../smart_env/LocationCard';
+import { locations } from '../../views/LocationView';
 
 
 const LocationMenu: Component = () => {

@@ -1,11 +1,11 @@
-import { Item, item_light, item_plug } from "./items"
+import { DEFAULT_ITEMS, Item } from "./items"
 
 export class Location {
     /**
      * Container class for locations.
      * @property name: location (e.g. "kitchen")
      * @property width, height: size of the location (e.g. 3 x 4) set by standard values
-     * @property items: items located in the location (e.g. 3 lights, 1 power plug)
+     * @property items: items located in the location (e.g. [[3 lights], [1 power plug]])
      */
      /** Amount of fields to be displayed in a location unit (e.g. 1x1 bathroom)*/
      static readonly FIELDS_PER_UNIT = 3
@@ -16,9 +16,9 @@ export class Location {
      name: string
      width: number
      height: number
-     items: [Item, number][]
+     items: Item[][]
 
-     constructor(name: string, width: number, height: number, items: [Item, number][]) {
+     constructor(name: string, width: number, height: number, items: Item[][]) {
         this.name = name
         this.width = width
         this.height = height
@@ -29,10 +29,10 @@ export class Location {
 /**
  * TODO: Create locations dynamically
  */
-const kitchen: Location = new Location("Küche", 3, 2, [[item_light, 1]])
-const livingRoom: Location = new Location("Wohnzimmer", 4, 3, [[item_light, 2], [item_plug, 1]])
-const bathroom: Location = new Location("Badezimmer", 2, 1, [[item_light, 1], [item_plug, 2]])
-const bedroom: Location = new Location("Schlafzimmer", 2, 2, [[item_light, 2], [item_plug, 1]])
-const home: Location = new Location("Haus", 6, 4, [[item_light, 6], [item_plug, 4]])
+const kitchen: Location = new Location("Küche", 3, 2, DEFAULT_ITEMS.kitchen)
+const livingRoom: Location = new Location("Wohnzimmer", 4, 3, DEFAULT_ITEMS.livingroom)
+const bathroom: Location = new Location("Badezimmer", 2, 1, DEFAULT_ITEMS.bathroom)
+const bedroom: Location = new Location("Schlafzimmer", 2, 2, [])
+const home: Location = new Location("Haus", 6, 4, [])
 
- export const DEFAULT_LOCATIONS: Location[] = [ kitchen,livingRoom, bathroom, bedroom, home ]
+export const DEFAULT_LOCATIONS: Location[] = [ kitchen, livingRoom, bathroom, bedroom, home ]
