@@ -9,8 +9,8 @@ export const [items, setItems] = createSignal(DEFAULT_ITEMS)
 export const [current_location, setCurrentLocation] = createSignal(locations()[0])
 
 /** width and height of LocationView, initialized with provisory numbers */
-const [viewWidth, setViewWidth] = createSignal(10)
-const [viewHeight, setViewHeight] = createSignal(10)
+const [viewWidth, setViewWidth] = createSignal(0)
+const [viewHeight, setViewHeight] = createSignal(0)
 
 createEffect(async () => {
     /**
@@ -43,8 +43,8 @@ function calcLocationSize(location: Location) {
      * height is intended to fill the view apart from width equally scaled is above 100%
      * In this case width is set to 100% of the view and height scaled accordingly
      */
-    let max_view_width: number = 100
-    let max_view_height: number = 100 * Location.VIEW_RATIO
+    let max_view_width: number = 100 * Location.VIEW_RATIO
+    let max_view_height: number = 100
 
     let scale_factor = max_view_height / location.height
     let view_width = location.width * scale_factor
@@ -54,7 +54,8 @@ function calcLocationSize(location: Location) {
         view_width = max_view_width
         view_height = location.height * scale_factor
     }
-    setViewWidth(view_width)
+    console.log("view width: ", view_width, " view height: ", view_height)
+    setViewWidth(view_width / Location.VIEW_RATIO)
     setViewHeight(view_height)
 }
 

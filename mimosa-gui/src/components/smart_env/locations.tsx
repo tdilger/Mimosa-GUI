@@ -1,3 +1,5 @@
+import { Viewport } from "../../utils/layout"
+import { createFieldMatrix, Field } from "../../views/fields"
 import { DEFAULT_ITEMS, Item } from "./items"
 
 export class Location {
@@ -17,22 +19,61 @@ export class Location {
      width: number
      height: number
      items: Item[][]
+     fields: Field[][]
 
-     constructor(name: string, width: number, height: number, items: Item[][]) {
+     constructor(name: string, items: Item[][], fields: Field[][]) {
         this.name = name
-        this.width = width
-        this.height = height
         this.items = items
+        this.fields = fields
+        this.width = fields[0].length
+        this.height = fields.length
      }
 }
 
+
+const LOCATION_ITEM_MAPPINGS = {
+   kitchen: [
+      {pos:{x:2, y:0}, item: DEFAULT_ITEMS.kitchen[0][0]}],
+   bathroom: [
+      {pos:{x:2, y:0}, item: DEFAULT_ITEMS.bathroom[0][0]}, 
+      {pos:{x:0, y:0}, item: DEFAULT_ITEMS.bathroom[1][0]}, 
+      {pos:{x:2, y:2}, item: DEFAULT_ITEMS.bathroom[1][1]}],
+   livingroom: [
+      {pos:{x:2, y:2}, item: DEFAULT_ITEMS.livingroom[0][0]}, 
+      {pos:{x:3, y:2}, item: DEFAULT_ITEMS.livingroom[0][1]}, 
+      {pos:{x:1, y:0}, item: DEFAULT_ITEMS.livingroom[1][0]}
+   ]
+}
+
+const LOCATION_DECORATION_MAPPINGS = {
+   kitchen: [],
+   bathroom: [],
+   livingroom: []
+}
+
+const KITCHEN_SIZE: Viewport = {width: 4, height: 2}
+const BATHROOM_SIZE: Viewport = {width: 3, height: 3}
+const LIVINGROOM_SIZE: Viewport = {width: 6, height: 3}
+const BEDROOM_SIZE: Viewport = {width: 3, height: 4}
+const HOME_SIZE: Viewport = {width: 11, height: 8}
+
+/**
+ * DEFAULT field matrices.
+ */
+const KITCHEN_FIELD_MATRIX: Field[][] = createFieldMatrix(KITCHEN_SIZE, LOCATION_ITEM_MAPPINGS.kitchen, LOCATION_DECORATION_MAPPINGS.kitchen)
+const BATHROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BATHROOM_SIZE, LOCATION_ITEM_MAPPINGS.bathroom, LOCATION_DECORATION_MAPPINGS.bathroom)
+const LIVINGROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(LIVINGROOM_SIZE, LOCATION_ITEM_MAPPINGS.livingroom, LOCATION_DECORATION_MAPPINGS.livingroom)
+const BEDROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BEDROOM_SIZE, LOCATION_ITEM_MAPPINGS.kitchen, LOCATION_DECORATION_MAPPINGS.kitchen)
+const HOME_FIELD_MATRIX: Field[][] = createFieldMatrix(HOME_SIZE, LOCATION_ITEM_MAPPINGS.kitchen, LOCATION_DECORATION_MAPPINGS.kitchen)
+
 /**
  * TODO: Create locations dynamically
+ * 
  */
-const kitchen: Location = new Location("Küche", 3, 2, DEFAULT_ITEMS.kitchen)
-const livingRoom: Location = new Location("Wohnzimmer", 4, 3, DEFAULT_ITEMS.livingroom)
-const bathroom: Location = new Location("Badezimmer", 2, 1, DEFAULT_ITEMS.bathroom)
-const bedroom: Location = new Location("Schlafzimmer", 2, 2, [])
-const home: Location = new Location("Haus", 6, 4, [])
+const kitchen: Location = new Location("Küche", DEFAULT_ITEMS.kitchen, KITCHEN_FIELD_MATRIX)
+const livingRoom: Location = new Location("Wohnzimmer", DEFAULT_ITEMS.livingroom, LIVINGROOM_FIELD_MATRIX)
+const bathroom: Location = new Location("Badezimmer", DEFAULT_ITEMS.bathroom, BATHROOM_FIELD_MATRIX)
+const bedroom: Location = new Location("Schlafzimmer", [], BEDROOM_FIELD_MATRIX)
+const home: Location = new Location("Haus", [], HOME_FIELD_MATRIX)
 
 export const DEFAULT_LOCATIONS: Location[] = [ kitchen, livingRoom, bathroom, bedroom, home ]

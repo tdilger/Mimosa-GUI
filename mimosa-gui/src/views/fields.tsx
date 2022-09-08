@@ -1,7 +1,7 @@
 import { JSX } from "solid-js"
 import { For } from "solid-js"
 import { Item } from "../components/smart_env/items"
-import { Position } from "../utils/layout"
+import { Position, Viewport } from "../utils/layout"
 
 export class Decoration {
     /**
@@ -31,45 +31,75 @@ export class Field {
     static readonly FIELD_GAP = 6
 
     pos: Position
-    object_on: object | {}
+    object_on: Item | Decoration | {}
 
-    constructor(pos: Position, object_on?: object | {}) {
+    constructor(pos: Position, object_on?: Item | Decoration | {}) {
+        this.pos = pos
         if (object_on instanceof Item) {
             console.log("This is an item!")
+            this.object_on = object_on as Item
         } else if (object_on instanceof Decoration) {
             console.log("This is only deco.")
+            this.object_on = object_on as Decoration
         } else {
             console.log("Here is nothing on it.")
+            this.object_on = {}
         }
     }
 }
 
 export function createFields(fields: Field[][]): JSX.Element {
-    /** JSX representation of the field matrix. */
+    /** 
+     * JSX representation of the field matrix. 
+     * @param fields: field matrix with objects (items and decorations) on
+     * */
     
     return <For each={fields}>
                 { (row_fields: Field[], i) => 
                 <For each={row_fields}>
                     {(field: Field, j) => 
-                    <div class="field">i: {i()}, j: {j()} </div>
+                    <div class="field">
+                        <p>i: {i()}, j: {j()}</p>
+                        { () => {
+                            console.log("field ", i(), " ", j(), ": ", typeof(field.object_on))
+                            if (typeof(field.object_on) == typeof(Item)) {
+                                let item_on: Item = field.object_on as Item
+                                let img_alt: string = item_on.type + " " + item_on.name
+                                return <img src={ item_on.img } alt={img_alt} /> 
+                            }}
+                        }
+                    </div>
                     }
                 </For> }
             </For>
 }
 
-export function createFieldMatrix(no_rows: number, no_columns: number): Field[][] {
+export function createFieldMatrix(
+    viewport: Viewport, 
+    items?: {pos: Position, item: Item}[],
+    decorations?: {pos: Position, decoration: Decoration}[]): Field[][] {
     /**
      * Initializes field matrix with GridView.
-     * grid column and row are 50px x 50px (FIELD_SIZE)
+     * @param viewport: width and height, no. of grid rows / columns
+     * @param items: item positions, e.g. ({x:3, y:2}, light-1)
+     * @param decorations: decoration positions, e.g. ({x: 2, y: 6}, deco-2)
      */
-    console.log("createFieldMatrix - no rows: ", no_rows, " columns: ", no_columns)
+    console.log("createFieldMatrix - no rows: ", viewport.width, " columns: ", viewport.height)
     var fields: Field[][] = []
-    for(let i=0; i<no_rows; ++i) {
+    for(let i=0; i<viewport.height; ++i) {
         fields[i] = []
-        for(let j=0; j<no_columns; ++j) {
+        for(let j=0; j<viewport.width; ++j) {
             let pos: Position = {x:i, y:j}
             fields[i][j] = new Field(pos)
         }
     }
+    items.forEach(item => {
+        let { x, y } = item.pos
+        fields[y][x] = new Field(item.pos, item.item)
+    });
+    decorations.forEach(deco => {
+        let {x, y} = deco.pos
+        fields[y][x] = new Field(deco.pos, deco.decoration)
+    })
     return fields
 }
