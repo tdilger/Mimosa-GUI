@@ -26,7 +26,7 @@ const Navigation: Component = () => {
             </Suspense>
             <div id="settings-icon" class="absolute right-6 items-center cursor-pointer outline-dashed" 
             onclick={ settings_overlay_on }>
-                <p>Settings</p> 
+                <img src="src/assets/elements/settings.svg" alt="Einstellungen" />
             </div>
         </nav>
     )

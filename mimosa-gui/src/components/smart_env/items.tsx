@@ -35,9 +35,9 @@ export namespace Item {
     /**
      * Currently supported items.
      */
-    const LIGHT = {type: Type.light, img: "src/assets/icons/lightbulb.svg", options: ItemOption.LIGHT_OPTIONS}
-    const COLORABLE_LIGHT = {type: Type.colorable_light, img: "src/assets/icons/lightbulb.svg", options: ItemOption.COLORABLE_LIGHT_OPTIONS}
-    const PLUG = {type: Type.plug, img: "src/assets/icons/power.svg", options: ItemOption.PLUG_OPTIONS}
+    const LIGHT = {type: Type.light, img: "src/assets/icons/google-material-icons/lightbulb.svg", options: ItemOption.LIGHT_OPTIONS}
+    const COLORABLE_LIGHT = {type: Type.colorable_light, img: "src/assets/icons/google-material-icons/lightbulb.svg", options: ItemOption.COLORABLE_LIGHT_OPTIONS}
+    const PLUG = {type: Type.plug, img: "src/assets/icons/google-material-icons/power.svg", options: ItemOption.PLUG_OPTIONS}
     const ITEM_MAP = [ LIGHT, COLORABLE_LIGHT, PLUG ]
 
     export function ItemMapper(item_type: Type): {type: Type, img: string, options: ItemOption[]} {
