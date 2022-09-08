@@ -1,4 +1,3 @@
-import { Position } from "../../utils/layout"
 import { ItemOption } from "./ItemOptions"
 
 
@@ -63,13 +62,13 @@ export namespace Item {
  * Default Items.
  * To be extended dynamically
  */
-const item_light_bl_1: Item = {id:"cl-1", type:Item.Type.colorable_light, name:"BL-1"}
-const item_light_kl_1: Item = {id:"l-1", type:Item.Type.light, name:"KL-1"}
-const item_light_wl_1: Item = {id:"l-2", type:Item.Type.light, name:"WL-1"}
-const item_light_wl_2: Item = {id:"l-3", type:Item.Type.light, name:"WL-2"}
-const item_plug_bs_1: Item = {id:"p-1", type:Item.Type.plug, name:"BS-1"}
-const item_plug_bs_2: Item = {id:"p-2", type:Item.Type.plug, name:"BS-2"}
-const item_plug_ws_1: Item = {id:"p-3", type:Item.Type.plug, name:"WS-1"}
+const item_light_bl_1: Item = new Item("cl-1", Item.Type.colorable_light, "BL-1")
+const item_light_kl_1: Item = new Item("l-1", Item.Type.light, "KL-1")
+const item_light_wl_1: Item = new Item("l-2", Item.Type.light, "WL-1")
+const item_light_wl_2: Item = new Item("l-3", Item.Type.light, "WL-2")
+const item_plug_bs_1: Item = new Item("p-1", Item.Type.plug, "BS-1")
+const item_plug_bs_2: Item = new Item("p-2", Item.Type.plug, "BS-2")
+const item_plug_ws_1: Item = new Item("p-3", Item.Type.plug, "WS-1")
 
 /**
  * Expendable item list for the application

@@ -1,4 +1,4 @@
-import { handle_color_settings, handle_typography_settings, handle_user_settings, power_off } from "./settingoptions";
+import { handle_color_settings, handle_typography_settings, handle_user_settings, power_off } from "./SettingOptions";
 
 export function settings_overlay_on() {
     document.getElementById("overlay").style.display = "block";

@@ -33,8 +33,9 @@ export class Field {
     pos: Position
     object_on: Item | Decoration | {}
 
-    constructor(pos: Position, object_on?: Item | Decoration | {}) {
+    constructor(pos: Position, object_on?: (Item | Decoration | {})) {
         this.pos = pos
+        console.log("Field init, ", object_on, " type: ", typeof object_on)
         if (object_on instanceof Item) {
             console.log("This is an item!")
             this.object_on = object_on as Item
@@ -61,13 +62,14 @@ export function createFields(fields: Field[][]): JSX.Element {
                     <div class="field">
                         <p>i: {i()}, j: {j()}</p>
                         { () => {
-                            console.log("field ", i(), " ", j(), ": ", typeof(field.object_on))
-                            if (typeof(field.object_on) == typeof(Item)) {
+                            console.log("Field ", field, " object on: ", field.object_on as Item)
+                            if (field.object_on instanceof Item) {
                                 let item_on: Item = field.object_on as Item
                                 let img_alt: string = item_on.type + " " + item_on.name
                                 return <img src={ item_on.img } alt={img_alt} /> 
-                            }}
-                        }
+                            }
+                        
+                        }}
                     </div>
                     }
                 </For> }
@@ -93,13 +95,18 @@ export function createFieldMatrix(
             fields[i][j] = new Field(pos)
         }
     }
+    console.log("items: ", items, " decorations: ", decorations)
     items.forEach(item => {
+        console.log("item: ", item)
         let { x, y } = item.pos
         fields[y][x] = new Field(item.pos, item.item)
+        console.log("field: ", fields[y][x])
     });
     decorations.forEach(deco => {
+        console.log("decoration: ", deco)
         let {x, y} = deco.pos
         fields[y][x] = new Field(deco.pos, deco.decoration)
     })
+    console.log("Fields: ", fields)
     return fields
 }

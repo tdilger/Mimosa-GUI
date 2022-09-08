@@ -63,8 +63,8 @@ const HOME_SIZE: Viewport = {width: 11, height: 8}
 const KITCHEN_FIELD_MATRIX: Field[][] = createFieldMatrix(KITCHEN_SIZE, LOCATION_ITEM_MAPPINGS.kitchen, LOCATION_DECORATION_MAPPINGS.kitchen)
 const BATHROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BATHROOM_SIZE, LOCATION_ITEM_MAPPINGS.bathroom, LOCATION_DECORATION_MAPPINGS.bathroom)
 const LIVINGROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(LIVINGROOM_SIZE, LOCATION_ITEM_MAPPINGS.livingroom, LOCATION_DECORATION_MAPPINGS.livingroom)
-const BEDROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BEDROOM_SIZE, LOCATION_ITEM_MAPPINGS.kitchen, LOCATION_DECORATION_MAPPINGS.kitchen)
-const HOME_FIELD_MATRIX: Field[][] = createFieldMatrix(HOME_SIZE, LOCATION_ITEM_MAPPINGS.kitchen, LOCATION_DECORATION_MAPPINGS.kitchen)
+const BEDROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BEDROOM_SIZE, [], [])
+const HOME_FIELD_MATRIX: Field[][] = createFieldMatrix(HOME_SIZE, [], [])
 
 /**
  * TODO: Create locations dynamically
