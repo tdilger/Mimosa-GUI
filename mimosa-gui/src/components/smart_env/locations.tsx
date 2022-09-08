@@ -72,10 +72,11 @@ const HOME_FIELD_MATRIX: Field[][] = createFieldMatrix(HOME_SIZE, [], [])
  * TODO: Create locations dynamically
  * 
  */
-const kitchen: Location = new Location("Küche", "src/assets/elements/icons8-icons/kitchenCardContent.svg", DEFAULT_ITEMS.kitchen, KITCHEN_FIELD_MATRIX)
-const livingRoom: Location = new Location("Wohnzimmer", "", DEFAULT_ITEMS.livingroom, LIVINGROOM_FIELD_MATRIX)
-const bathroom: Location = new Location("Badezimmer", "", DEFAULT_ITEMS.bathroom, BATHROOM_FIELD_MATRIX)
-const bedroom: Location = new Location("Schlafzimmer", "", [], BEDROOM_FIELD_MATRIX)
-const home: Location = new Location("Haus", "", [], HOME_FIELD_MATRIX)
+let location_img_dir = "src/assets/elements/icons8-icons/"
+const kitchen: Location = new Location("Küche", location_img_dir + "kitchenCardContent.svg", DEFAULT_ITEMS.kitchen, KITCHEN_FIELD_MATRIX)
+const livingRoom: Location = new Location("Wohnzimmer", location_img_dir + "livingroomCardContent.svg", DEFAULT_ITEMS.livingroom, LIVINGROOM_FIELD_MATRIX)
+const bathroom: Location = new Location("Badezimmer", location_img_dir + "bathroomCardContent.svg", DEFAULT_ITEMS.bathroom, BATHROOM_FIELD_MATRIX)
+const bedroom: Location = new Location("Schlafzimmer", location_img_dir + "bedroomCardContent.svg", [], BEDROOM_FIELD_MATRIX)
+const home: Location = new Location("Haus", location_img_dir + "homeCardContent.svg", [], HOME_FIELD_MATRIX)
 
 export const DEFAULT_LOCATIONS: Location[] = [ kitchen, livingRoom, bathroom, bedroom, home ]
