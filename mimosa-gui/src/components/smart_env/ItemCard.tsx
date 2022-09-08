@@ -22,6 +22,7 @@ export const ItemIcon: Component<ItemProps> = ( props ) => {
         <div class="ItemIcon">
             <CardMedia
               component="img"
+              sx={{ width: '100%', paddingX: '20%' }}
               image={ img }
               alt={ img_alt }
             />
@@ -91,9 +92,7 @@ export const ItemCard: Component<ItemCardProps> = ( props ) => {
         <>
             <ItemCardBadge badgeContent={ items.length } color="primary" 
             anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
-                <button class="card itemCard"
-                type="button"
-                onClick={ handleClick }>
+                <button class="card itemCard" type="button" onClick={ handleClick }>
                     <div class="cardContent">
                         <ItemIcon item_type={ item_type } />
                     </div>

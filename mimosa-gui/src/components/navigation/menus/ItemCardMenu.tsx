@@ -40,7 +40,7 @@ const ItemSelectorCard: Component<ItemSelectorCardProps> = ( props ) => {
     <div class="relative text-center m-5 flex-col">
       <CardMedia
         component="img"
-        sx={{ width: 100, height: 100 }}
+        sx={{ width: 90, height: 90 }}
         image={ item.img }
         alt={ item.type + " " + item.name }
       />
