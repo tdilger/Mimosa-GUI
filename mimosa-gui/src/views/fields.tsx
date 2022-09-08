@@ -66,7 +66,7 @@ export function createFields(fields: Field[][]): JSX.Element {
                             if (field.object_on instanceof Item) {
                                 let item_on: Item = field.object_on as Item
                                 let img_alt: string = item_on.type + " " + item_on.name
-                                return <img src={ item_on.img } alt={img_alt} /> 
+                                return <img src={item_on.img} alt={img_alt} />
                             }
                         
                         }}
