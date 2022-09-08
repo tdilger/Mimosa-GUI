@@ -68,7 +68,6 @@ export function createFields(fields: Field[][]): JSX.Element {
                                     let img_alt: string = item_on.type + " " + item_on.name
                                     return <img src={item_on.img} class="w-full" style="padding: 0 30%" alt={img_alt} />
                                 }
-                            
                             }}
                         </div>
                     </div>

@@ -20,9 +20,11 @@ export class Location {
      height: number
      items: Item[][]
      fields: Field[][]
+     readonly img: string
 
-     constructor(name: string, items: Item[][], fields: Field[][]) {
+     constructor(name: string, img: string, items: Item[][], fields: Field[][]) {
         this.name = name
+        this.img = img
         this.items = items
         this.fields = fields
         this.width = fields[0].length
@@ -70,10 +72,10 @@ const HOME_FIELD_MATRIX: Field[][] = createFieldMatrix(HOME_SIZE, [], [])
  * TODO: Create locations dynamically
  * 
  */
-const kitchen: Location = new Location("Küche", DEFAULT_ITEMS.kitchen, KITCHEN_FIELD_MATRIX)
-const livingRoom: Location = new Location("Wohnzimmer", DEFAULT_ITEMS.livingroom, LIVINGROOM_FIELD_MATRIX)
-const bathroom: Location = new Location("Badezimmer", DEFAULT_ITEMS.bathroom, BATHROOM_FIELD_MATRIX)
-const bedroom: Location = new Location("Schlafzimmer", [], BEDROOM_FIELD_MATRIX)
-const home: Location = new Location("Haus", [], HOME_FIELD_MATRIX)
+const kitchen: Location = new Location("Küche", "src/assets/elements/icons8-icons/kitchenCardContent.svg", DEFAULT_ITEMS.kitchen, KITCHEN_FIELD_MATRIX)
+const livingRoom: Location = new Location("Wohnzimmer", "", DEFAULT_ITEMS.livingroom, LIVINGROOM_FIELD_MATRIX)
+const bathroom: Location = new Location("Badezimmer", "", DEFAULT_ITEMS.bathroom, BATHROOM_FIELD_MATRIX)
+const bedroom: Location = new Location("Schlafzimmer", "", [], BEDROOM_FIELD_MATRIX)
+const home: Location = new Location("Haus", "", [], HOME_FIELD_MATRIX)
 
 export const DEFAULT_LOCATIONS: Location[] = [ kitchen, livingRoom, bathroom, bedroom, home ]

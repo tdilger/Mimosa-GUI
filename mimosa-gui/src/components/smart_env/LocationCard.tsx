@@ -24,8 +24,7 @@ export const LocationCard: Component<LocationProps> = (props) => {
                 }
                 } }>
                 <div class="cardContent">
-                    <p>Bild</p>
-                    <p>{ props.location.name }</p>
+                    <img src={ props.location.img } alt={ props.location.name } />
                 </div>
             </button>
         </>
