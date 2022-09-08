@@ -60,16 +60,17 @@ export function createFields(fields: Field[][]): JSX.Element {
                 <For each={row_fields}>
                     {(field: Field, j) => 
                     <div class="field">
-                        <p>i: {i()}, j: {j()}</p>
-                        { () => {
-                            console.log("Field ", field, " object on: ", field.object_on as Item)
-                            if (field.object_on instanceof Item) {
-                                let item_on: Item = field.object_on as Item
-                                let img_alt: string = item_on.type + " " + item_on.name
-                                return <img src={item_on.img} width="33%" height="33%" alt={img_alt} />
-                            }
-                        
-                        }}
+                        <div class="fieldContent">
+                            { () => {
+                                console.log("Field ", field, " object on: ", field.object_on as Item)
+                                if (field.object_on instanceof Item) {
+                                    let item_on: Item = field.object_on as Item
+                                    let img_alt: string = item_on.type + " " + item_on.name
+                                    return <img src={item_on.img} class="w-full" style="padding: 0 30%" alt={img_alt} />
+                                }
+                            
+                            }}
+                        </div>
                     </div>
                     }
                 </For> }

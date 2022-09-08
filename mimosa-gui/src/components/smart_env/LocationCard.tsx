@@ -1,6 +1,6 @@
 import { Component } from "solid-js"
 import { current_location, setCurrentLocation } from "../../views/LocationView"
-import { locationMenuOpen, setLocationMenuOpen } from "../navigation/Navigation"
+import { setLocationMenuOpen } from "../navigation/Navigation"
 import { Location } from "../smart_env/locations"
 
 export interface LocationProps {
