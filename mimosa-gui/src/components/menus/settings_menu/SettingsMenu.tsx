@@ -1,4 +1,4 @@
-import { handle_color_settings, handle_typography_settings, handle_user_settings, power_off } from "./SettingOptions";
+import { settings } from "./SettingOptions";
 
 export function settings_overlay_on() {
     document.getElementById("overlay").style.display = "block";
@@ -14,12 +14,12 @@ function SettingsMenu() {
             <div id="overlay-background" class="w-full h-full z-10" onclick={ settings_overlay_off }/>
             <div id="settings-menu" class="z-20">
                 <ul>
-                    <li onClick={ handle_user_settings }><div class="settings-symbol">Benutzer</div></li>
-                    <li onClick={ handle_color_settings }><div class="settings-symbol">Farben</div></li>
-                    <li onClick={ handle_typography_settings}><div class="settings-symbol">Typographie</div></li>
-                    <li onClick={ power_off }><div class="settings-symbol">Ausschalten</div></li>
+                    <li onClick={ settings.user.option }><div class="settings-symbol"><img src={settings.user.img} alt={settings.user.name} /></div></li>
+                    <li onClick={ settings.color.option }><div class="settings-symbol"><img src={settings.color.img} alt={settings.color.name} /></div></li>
+                    <li onClick={ settings.typography.option }><div class="settings-symbol"><img src={settings.typography.img} alt={settings.typography.name} /></div></li>
+                    <li onClick={ settings.power_off.option }><div class="settings-symbol"><img src={settings.power_off.img} alt={settings.power_off.name} /></div></li>
                 </ul>
-                <small class="settings-symbol mx-auto flex w-full relative align-middle justify-center">Impressum</small>
+                <p class="text-sm settings-symbol mx-auto flex w-full relative align-middle justify-center">Impressum</p>
             </div>
         </div>
     )
