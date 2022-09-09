@@ -7,7 +7,6 @@ import Switch from "@suid/material/Switch";
 import { Component, For, createSignal } from "solid-js";
 import { ItemOption } from "../../smart_env/ItemOptions";
 import { Item } from "../../smart_env/items";
-import Divider from "@suid/material/Divider";
 
 
 interface ItemSelectorCardProps {
@@ -31,6 +30,10 @@ const ControlledSwitch: Component = () => {
   );
 }
 
+function handle_item_selection(event: Event) {
+  console.log("handle item selection target: ", event.currentTarget)
+}
+
 const ItemSelectorCard: Component<ItemSelectorCardProps> = ( props ) => {
   /**
    * Card in ItemMenu to select each item of specific type in current location.
@@ -40,11 +43,12 @@ const ItemSelectorCard: Component<ItemSelectorCardProps> = ( props ) => {
     <div class="relative text-center m-5 flex-col">
       <CardMedia
         component="img"
-        sx={{ width: 90, height: 90 }}
+        sx={{ width: 90, height: 90, marginBottom: '5px' }}
         image={ item.img }
         alt={ item.type + " " + item.name }
+        onClick={ handle_item_selection }
       />
-      <ControlledSwitch />
+      <p>{ item.name }</p>
     </div>
     }</For>
 }
@@ -67,7 +71,7 @@ const ItemCardMenu: Component<ItemCardMenuProps> = ( props ) => {
   }
   console.log("item options: ", item_options())
   return (
-    <Card sx={{ display: "flex", flexDirection: "column", minWidth: "400" }}>
+    <Card sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
         <Typography component="div" variant="h5">
             { props.item_type }
@@ -76,7 +80,8 @@ const ItemCardMenu: Component<ItemCardMenuProps> = ( props ) => {
             <ItemSelectorCard items={ props.items } />
             <For each={ item_options() }>{
               (item_option: ItemOption) => 
-                <div class="mx-2 min-w-fit">{ item_option.name }</div>
+                if (item_option.name == )
+                <div class="item-option mx-2"><img src={ item_option.symbol_src } alt={ item_option.name} /></div>
             }</For>
           </Box>
         </CardContent>

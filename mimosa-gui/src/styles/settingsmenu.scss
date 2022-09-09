@@ -14,7 +14,6 @@
         right: 0;
         padding: 2em 1em;
         background-color: #aaaaaa;   
-        cursor: pointer; /* Add a pointer on hover */    
     
         ul {
             position: relative;
@@ -30,6 +29,7 @@
             .settings-symbol {
                 text-align: center;
                 margin: 0 auto;
+                cursor: pointer; /* Add a pointer on hover */
             }
     
             li {
@@ -58,6 +58,8 @@
             left: 0;
             right: 0;
             bottom: 40px;
+            text-decoration: underline;
+            cursor: pointer; /* Add a pointer on hover */
         }
     }
 }

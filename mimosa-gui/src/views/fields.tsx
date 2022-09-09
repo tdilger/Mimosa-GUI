@@ -35,15 +35,15 @@ export class Field {
 
     constructor(pos: Position, object_on?: (Item | Decoration | {})) {
         this.pos = pos
-        console.log("Field init, ", object_on, " type: ", typeof object_on)
+        // console.log("Field init, ", object_on, " type: ", typeof object_on)
         if (object_on instanceof Item) {
-            console.log("This is an item!")
+            // console.log("This is an item!")
             this.object_on = object_on as Item
         } else if (object_on instanceof Decoration) {
-            console.log("This is only deco.")
+            // console.log("This is only deco.")
             this.object_on = object_on as Decoration
         } else {
-            console.log("Here is nothing on it.")
+            // console.log("Here is nothing on it.")
             this.object_on = {}
         }
     }
@@ -62,7 +62,7 @@ export function createFields(fields: Field[][]): JSX.Element {
                     <div class="field">
                         <div class="fieldContent">
                             { () => {
-                                console.log("Field ", field, " object on: ", field.object_on as Item)
+                                // console.log("Field ", field, " object on: ", field.object_on as Item)
                                 if (field.object_on instanceof Item) {
                                     let item_on: Item = field.object_on as Item
                                     let img_alt: string = item_on.type + " " + item_on.name
@@ -86,7 +86,7 @@ export function createFieldMatrix(
      * @param items: item positions, e.g. ({x:3, y:2}, light-1)
      * @param decorations: decoration positions, e.g. ({x: 2, y: 6}, deco-2)
      */
-    console.log("createFieldMatrix - no rows: ", viewport.width, " columns: ", viewport.height)
+    // console.log("createFieldMatrix - no rows: ", viewport.width, " columns: ", viewport.height)
     var fields: Field[][] = []
     for(let i=0; i<viewport.height; ++i) {
         fields[i] = []
@@ -100,13 +100,11 @@ export function createFieldMatrix(
         console.log("item: ", item)
         let { x, y } = item.pos
         fields[y][x] = new Field(item.pos, item.item)
-        console.log("field: ", fields[y][x])
     });
     decorations.forEach(deco => {
         console.log("decoration: ", deco)
         let {x, y} = deco.pos
         fields[y][x] = new Field(deco.pos, deco.decoration)
     })
-    console.log("Fields: ", fields)
     return fields
 }
