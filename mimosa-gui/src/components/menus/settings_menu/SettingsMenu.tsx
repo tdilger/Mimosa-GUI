@@ -19,7 +19,7 @@ function SettingsMenu() {
                     <li onClick={ settings.typography.option }><div class="settings-symbol"><img src={settings.typography.img} alt={settings.typography.name} /></div></li>
                     <li onClick={ settings.power_off.option }><div class="settings-symbol"><img src={settings.power_off.img} alt={settings.power_off.name} /></div></li>
                 </ul>
-                <p class="text-sm settings-symbol mx-auto flex w-full relative align-middle justify-center">Impressum</p>
+                <p id="impressum" class="text-m settings-symbol mx-auto flex w-full relative align-middle justify-center">Impressum</p>
             </div>
         </div>
     )
