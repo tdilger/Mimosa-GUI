@@ -21,6 +21,7 @@ const ControlledSwitch: Component = () => {
 
   return (
     <Switch
+      sx={{transform: 'translateY(-50%) scale(1.5)'}}
       checked={checked()}
       onChange={(event, value) => {
         setChecked(value);
@@ -79,9 +80,14 @@ const ItemCardMenu: Component<ItemCardMenuProps> = ( props ) => {
           <Box sx={{ position: "relative", textAlign: "center", alignContent: "center", alignItems: "center", display: "flex", flexDirection: "row"}}>
             <ItemSelectorCard items={ props.items } />
             <For each={ item_options() }>{
-              (item_option: ItemOption) => 
-                if (item_option.name == )
-                <div class="item-option mx-2"><img src={ item_option.symbol_src } alt={ item_option.name} /></div>
+              (item_option: ItemOption, i) => 
+                { 
+                  if (i()==0) {
+                  // Switch option
+                  return <div class="item-option mx-2"><ControlledSwitch /></div>
+                } else {
+                  return <div class="item-option mx-2"><img src={ item_option.symbol_src } alt={ item_option.name} /></div>
+                }}
             }</For>
           </Box>
         </CardContent>
