@@ -24,11 +24,31 @@ export namespace ItemOption {
      * name convention: starting with "item_option_"
      */
 
+    /** Functions when setting an option with ItemOptionBackdrop. */
+    function handle_option_switch() {
+        console.log("handle switch")
+    }
+    
+    function handle_option_change_brightness() {
+        console.log("handle change brightness")
+    }
+    
+    function handle_option_change_color() {
+        console.log("handle change color")
+    }
+
+    /** Mapper for item options. */
+    export const handle_option = {
+        switch: handle_option_switch,
+        change_brightness: handle_option_change_brightness,
+        change_color: handle_option_change_color
+    }
+
     let item_option_img_path = "src/assets/icons/google-material-icons/"
 
-    const SWITCH: ItemOption = new ItemOption("Licht anschalten", item_option_img_path + "", () => {})
-    const CHANGE_BRIGHTNESS: ItemOption = new ItemOption("Helligkeit einstellen", item_option_img_path + "BrightnessOption.svg", () => {})
-    const CHANGE_COLOR: ItemOption = new ItemOption("Farbe einstellen", item_option_img_path + "", () => {})
+    const SWITCH: ItemOption = new ItemOption("Licht anschalten", item_option_img_path + "", handle_option_switch)
+    const CHANGE_BRIGHTNESS: ItemOption = new ItemOption("Helligkeit einstellen", item_option_img_path + "BrightnessOption.svg", handle_option_change_brightness)
+    const CHANGE_COLOR: ItemOption = new ItemOption("Farbe einstellen", item_option_img_path + "", handle_option_change_color)
  
     /**
      * Default option assignment to items.
@@ -38,4 +58,3 @@ export namespace ItemOption {
     export const COLORABLE_LIGHT_OPTIONS: ItemOption[] = [SWITCH, CHANGE_BRIGHTNESS, CHANGE_COLOR]
     export const PLUG_OPTIONS: ItemOption[] = [SWITCH]
 }
-

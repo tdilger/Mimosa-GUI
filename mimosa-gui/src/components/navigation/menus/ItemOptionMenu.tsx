@@ -1,4 +1,3 @@
-import { useTheme } from '@suid/material';
 import Backdrop from '@suid/material/Backdrop';
 import Card from '@suid/material/Card';
 import CardActions from '@suid/material/CardActions';
@@ -6,21 +5,16 @@ import CardContent from '@suid/material/CardContent';
 import IconButton from '@suid/material/IconButton';
 import Slide from '@suid/material/Slide';
 import Typography from '@suid/material/Typography';
-import { Component, createSignal, For } from 'solid-js';
+import { createSignal, For } from 'solid-js';
+import { theme } from '../../../App';
 import { ItemOption } from '../../smart_env/ItemOptions';
 import { Item } from '../../smart_env/items';
 
 
 function ItemOptionMenu(item: Item) {
     /** open and anchor signals to open ItemCardMenu at proper place. */
-    const theme = useTheme();
     const [open, setOpen] = createSignal(false);
-    const handleClose = () => {
-        setOpen(false);
-    };
     const [anchorEl, setAnchorEl] = createSignal<HTMLButtonElement | null>(null);
-    const canBeOpen = () => open() && !!anchorEl();
-    const id = () => (canBeOpen() ? "transition-popover" : undefined);
 
     return (
             <Backdrop

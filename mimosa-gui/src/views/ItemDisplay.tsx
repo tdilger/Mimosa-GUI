@@ -2,6 +2,12 @@ import { Component, createEffect, createSignal } from 'solid-js';
 import { createFields, Field } from './fields';
 import { Viewport } from '../utils/layout';
 import { current_location } from './LocationView';
+import { Item } from '../components/smart_env/items';
+
+// Item clicked in itemDisplay on field
+export const [clicked_item, set_clicked_item]: [() => Item, (item: Item) => void] = createSignal()
+// Item selected via ItemCardMenu
+export const [selected_item, set_selected_item]: [() => Item, (item: Item) => void] = createSignal()
 
 export interface ItemDisplayProps {
     /**
@@ -19,8 +25,7 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
 
     /** Amount of fields to be displayed. */
     const [row_field_no, set_row_field_no] = createSignal()
-    const [column_field_no, set_column_field_no] = createSignal()
-    
+    const [column_field_no, set_column_field_no] = createSignal()    
 
     /** Refresh row and column no. and scale field size according to location size.
     function on_location_change(location: Location) {
@@ -31,7 +36,6 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
 
     /** Location changed. 
     createEffect(() => {
-        
         console.log("viewport: ", props.viewport);
         on_location_change(current_location())
     })

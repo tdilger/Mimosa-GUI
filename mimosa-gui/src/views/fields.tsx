@@ -1,7 +1,10 @@
+import Button from "@suid/material/Button"
+import IconButton from "@suid/material/IconButton"
 import { JSX } from "solid-js"
 import { For } from "solid-js"
 import { Item } from "../components/smart_env/items"
 import { Position, Viewport } from "../utils/layout"
+import { set_clicked_item, set_selected_item } from "./ItemDisplay"
 
 export class Decoration {
     /**
@@ -66,7 +69,14 @@ export function createFields(fields: Field[][]): JSX.Element {
                                 if (field.object_on instanceof Item) {
                                     let item_on: Item = field.object_on as Item
                                     let img_alt: string = item_on.type + " " + item_on.name
-                                    return <img src={item_on.img} class="w-full" style="padding: 0 30%" alt={img_alt} />
+                                    return <IconButton onClick={ () => set_clicked_item(item_on) } 
+                                    sx={{width: '60%', height: '60%', padding: '10% 10%'}} >
+                                        <img src={item_on.img} class="w-full h-full" alt={img_alt} />
+                                        </IconButton>
+                                } else if(field.object_on instanceof Decoration) {
+                                    let deco_on: Decoration = field.object_on as Decoration
+                                    let img_alt: string = deco_on.name
+                                    return <img src={deco_on.img} class="w-full" style="padding: 0 30%" alt={img_alt} />
                                 }
                             }}
                         </div>

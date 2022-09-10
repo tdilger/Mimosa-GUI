@@ -5,6 +5,8 @@ import Navigation from './components/navigation/Navigation';
 import SpeechInput from './components/SpeechInput';
 import { LocationView } from './views/LocationView';
 import './style.scss'
+import ItemOptionBackdrop, { ItemSpecificOptionBackdrop } from './components/smart_env/ItemOptionBackdrop';
+import { useTheme } from '@suid/material';
 
 /**
  * TODO: Create users dynamically
@@ -14,7 +16,12 @@ const DEFAULT_USER = 'admin'
 /**
  * All locations and items fetched from api.
  */
-const [username, setUsername] = createSignal(DEFAULT_USER)
+export const [username, setUsername] = createSignal(DEFAULT_USER)
+
+/**
+ * Site-wide theme.
+ */
+export const theme = useTheme();
 
 const App: Component = () => {
   return (
@@ -25,6 +32,8 @@ const App: Component = () => {
         <Route path='/' element={<LocationView />} />
       </Routes>
       <SpeechInput />
+      <ItemOptionBackdrop />
+      <ItemSpecificOptionBackdrop />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import { LightIcon, PlugIcon } from "../../assets/icons/icons"
 import { ItemOption } from "./ItemOptions"
 
 
