@@ -1,10 +1,9 @@
-import Button from "@suid/material/Button"
 import IconButton from "@suid/material/IconButton"
-import { JSX } from "solid-js"
+import { createSignal, JSX } from "solid-js"
 import { For } from "solid-js"
 import { Item } from "../components/smart_env/items"
 import { Position, Viewport } from "../utils/layout"
-import { set_clicked_item, set_selected_item } from "./ItemDisplay"
+import { set_clicked_item } from "./ItemDisplay"
 
 export class Decoration {
     /**
@@ -57,6 +56,8 @@ export function createFields(fields: Field[][]): JSX.Element {
      * JSX representation of the field matrix. 
      * @param fields: field matrix with objects (items and decorations) on
      * */
+
+     const [open, setOpen] = createSignal(false);
     
     return <For each={fields}>
                 { (row_fields: Field[], i) => 

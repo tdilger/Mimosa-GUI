@@ -1,7 +1,6 @@
 import Backdrop from "@suid/material/Backdrop"
 import Card from "@suid/material/Card"
 import CardContent from "@suid/material/CardContent"
-import CircularProgress from "@suid/material/CircularProgress"
 import IconButton from "@suid/material/IconButton"
 import { Component, createSignal, For } from "solid-js"
 import { theme } from "../../App"
@@ -10,19 +9,21 @@ import { ItemOption } from "./ItemOptions"
 
 export const [selected_option, set_selected_option]: [() => ItemOption, (option: ItemOption) => void] = createSignal()
 
-const ItemOptionBackdrop: Component = () => {
-    /**
-     * ItemOptions displayed when item in itemDisplay is clicked.
-     * Shows e.g. light options: switch (on / off), change brightness and change color
-     */
-	return <Backdrop id="item-option-backdrop" sx={{ color: "#fff", zIndex: theme.zIndex.drawer + 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-    open={clicked_item() != null}
-    onClick={() => set_clicked_item(null)}>
-            <p>Text</p>
-            <CircularProgress style={{ color: 'white' }} />
-            <Card class="center flex-row" sx={{ minWidth: 275 }}>
+export function item_options_overlay_on() {
+    document.getElementById("item-option-backdrop").style.display = "block";
+}
+
+export function item_options_overlay_off() {
+    document.getElementById("item-option-backdrop").style.display = "none";
+}
+
+function ItemOptionBackdrop() {
+    return (
+        <div id="item-option-backdrop" class="z-30 absolute top-0 bottom-0 left-0 right-0 w-full h-full">
+            <div id="overlay-background" class="w-full h-full z-10" onclick={ item_options_overlay_off }/>
+            <Card id="item-option-backdrop-card" class="center flex-row" sx={{ zIndex: 20, minWidth: 275 }}>
                 <CardContent>
-                    <For each={ clicked_item().options }>{
+                    <For each={ clicked_item()?.options }>{
                         (option: ItemOption) => 
                             <IconButton sx={{marginX: '10px'}} action={ option.action() }>
                                 <p>Test</p>
@@ -32,7 +33,8 @@ const ItemOptionBackdrop: Component = () => {
                     </For>
                 </CardContent>
             </Card>
-    </Backdrop>
+        </div>
+    )
 }
 
 export default ItemOptionBackdrop
