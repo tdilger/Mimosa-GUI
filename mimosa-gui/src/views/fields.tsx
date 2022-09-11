@@ -1,5 +1,5 @@
 import IconButton from "@suid/material/IconButton"
-import { createSignal, JSX } from "solid-js"
+import { JSX } from "solid-js"
 import { For } from "solid-js"
 import { Item } from "../components/smart_env/items"
 import { Position, Viewport } from "../utils/layout"
@@ -56,8 +56,6 @@ export function createFields(fields: Field[][]): JSX.Element {
      * JSX representation of the field matrix. 
      * @param fields: field matrix with objects (items and decorations) on
      * */
-
-     const [open, setOpen] = createSignal(false);
     
     return <For each={fields}>
                 { (row_fields: Field[], i) => 
@@ -68,7 +66,7 @@ export function createFields(fields: Field[][]): JSX.Element {
                             { () => {
                                 // console.log("Field ", field, " object on: ", field.object_on as Item)
                                 if (field.object_on instanceof Item) {
-                                    let item_on: Item = field.object_on as Item
+                                    var item_on: Item = field.object_on as Item
                                     let img_alt: string = item_on.type + " " + item_on.name
                                     return <IconButton onClick={ () => set_clicked_item(item_on) } 
                                     sx={{width: '60%', height: '60%', padding: '10% 10%'}} >

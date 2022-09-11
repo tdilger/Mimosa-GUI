@@ -45,3 +45,25 @@
         }
     }
 }
+
+#item-option-backdrop {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+
+    img {
+        min-width: 80px;
+        max-width: 120px;
+        aspect-ratio: 1/1;
+    }
+
+    #overlay-background {
+        background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    }
+
+    #item-option-backdrop-card, #item-specific-option-backdrop-card {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

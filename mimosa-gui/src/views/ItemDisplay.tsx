@@ -3,22 +3,34 @@ import { createFields, Field } from './fields';
 import { Viewport } from '../utils/layout';
 import { current_location } from './LocationView';
 import { Item } from '../components/smart_env/items';
-import { item_options_overlay_on } from '../components/smart_env/ItemOptionBackdrop';
+import { item_options_overlay_on, selected_option, set_selected_option } from '../components/smart_env/ItemOptionBackdrop';
 
 // Item clicked in itemDisplay on field
-export const [clicked_item, set_clicked_item]: [() => Item, (item: Item) => void] = createSignal()
+export const [clicked_item, set_clicked_item]: [() => Item, (item: Item) => void] = createSignal(null)
 // Item selected via ItemCardMenu
-export const [selected_item, set_selected_item]: [() => Item, (item: Item) => void] = createSignal()
+export const [selected_item, set_selected_item]: [() => Item, (item: Item) => void] = createSignal(null)
 
 createEffect (
+    /**
+     * Open item option overlay when item clicked.
+     */
     () => {
+        console.log("effect ausgelöst, clicked item: ", clicked_item())
         if (clicked_item() != null) {
+            console.log("item clicked: ", clicked_item())
             item_options_overlay_on()
         }
     }
 )
-    
 
+createEffect (
+    () => {
+        if (selected_option() != null) {
+            console.log("selected option: ", selected_option())
+            item_options_overlay_on()
+        }
+    }
+)
 
 export interface ItemDisplayProps {
     /**
