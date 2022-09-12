@@ -16,8 +16,8 @@ createEffect (
      * If only a single option is available, option action will be triggered
      */
     () => {
-        console.log("effect ausgelöst, clicked item: ", clicked_item())
         let clicked: Item = clicked_item()
+        console.log("effect ausgelöst, clicked item: ", clicked)
         if (clicked != null) {
             console.log("item clicked: ", clicked)
             if (clicked.options?.length == 1) {
@@ -26,18 +26,6 @@ createEffect (
                 clicked.options[0].action()
                 return
             }
-            item_options_overlay_on()
-        }
-    }
-)
-
-createEffect (
-    /**
-     * Show control of selection option (e.g. change color).
-     */
-    () => {
-        if (selected_option() != null) {
-            console.log("selected option: ", selected_option())
             item_options_overlay_on()
         }
     }

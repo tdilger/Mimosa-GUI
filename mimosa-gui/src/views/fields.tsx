@@ -1,5 +1,5 @@
 import IconButton from "@suid/material/IconButton"
-import { JSX } from "solid-js"
+import { Component, JSX } from "solid-js"
 import { For } from "solid-js"
 import { Item } from "../components/smart_env/items"
 import { Position, Viewport } from "../utils/layout"
@@ -51,38 +51,52 @@ export class Field {
     }
 }
 
+interface ItemOnFieldProps {
+    item: Item
+}
+
+const ItemOnField: Component<ItemOnFieldProps> = ( props ) => {
+    let img_alt: string = props.item.type + " " + props.item.name
+    
+
+    return (
+        <IconButton onClick={ () => set_clicked_item(props.item) } 
+            sx={{width: '60%', height: '60%', padding: '10% 10%'}} >
+            <img src={props.item.img} class="w-full h-full" alt={img_alt} />
+        </IconButton>
+    )
+}
+
 export function createFields(fields: Field[][]): JSX.Element {
     /** 
      * JSX representation of the field matrix. 
      * @param fields: field matrix with objects (items and decorations) on
      * */
     
-    return <For each={fields}>
-                { (row_fields: Field[], i) => 
-                <For each={row_fields}>
-                    {(field: Field, j) => 
-                    <div class="field">
-                        <div class="fieldContent">
-                            { () => {
-                                // console.log("Field ", field, " object on: ", field.object_on as Item)
-                                if (field.object_on instanceof Item) {
-                                    var item_on: Item = field.object_on as Item
-                                    let img_alt: string = item_on.type + " " + item_on.name
-                                    return <IconButton onClick={ () => set_clicked_item(item_on) } 
-                                    sx={{width: '60%', height: '60%', padding: '10% 10%'}} >
-                                        <img src={item_on.img} class="w-full h-full" alt={img_alt} />
-                                        </IconButton>
-                                } else if(field.object_on instanceof Decoration) {
-                                    let deco_on: Decoration = field.object_on as Decoration
-                                    let img_alt: string = deco_on.name
-                                    return <img src={deco_on.img} class="w-full" style="padding: 0 30%" alt={img_alt} />
-                                }
-                            }}
-                        </div>
+    return (
+        <For each={fields}>
+            { (row_fields: Field[], i) => 
+            <For each={row_fields}>
+                {(field: Field, j) => 
+                <div class="field">
+                    <div class="fieldContent">
+                        { () => {
+                            // console.log("Field ", field, " object on: ", field.object_on as Item)
+                            if (field.object_on instanceof Item) {
+                                let item_on: Item = field.object_on as Item
+                                return <ItemOnField item={ item_on } />
+                            } else if(field.object_on instanceof Decoration) {
+                                let deco_on: Decoration = field.object_on as Decoration
+                                let img_alt: string = deco_on.name
+                                return <img src={deco_on.img} class="w-full" style="padding: 0 30%" alt={img_alt} />
+                            }
+                        }}
                     </div>
-                    }
-                </For> }
-            </For>
+                </div>
+                }
+            </For> }
+        </For>
+    )
 }
 
 export function createFieldMatrix(

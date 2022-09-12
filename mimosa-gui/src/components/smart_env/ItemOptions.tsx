@@ -1,3 +1,5 @@
+import { hide_item_option_backdrop, set_selected_option } from "./ItemOptionBackdrop"
+
 export class ItemOption {
     /**
      * Option that can be executed by an item.
@@ -35,6 +37,8 @@ export namespace ItemOption {
     
     function handle_option_change_color() {
         console.log("handle change color")
+        set_selected_option(this)
+        hide_item_option_backdrop()
     }
 
     /** Mapper for item options. */

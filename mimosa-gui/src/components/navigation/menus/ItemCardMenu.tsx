@@ -4,7 +4,7 @@ import CardContent from "@suid/material/CardContent";
 import CardMedia from "@suid/material/CardMedia";
 import Typography from "@suid/material/Typography";
 import Switch from "@suid/material/Switch";
-import { Component, For, createSignal } from "solid-js";
+import { Component, For, createSignal, createEffect } from "solid-js";
 import { ItemOption } from "../../smart_env/ItemOptions";
 import { Item } from "../../smart_env/items";
 
@@ -16,8 +16,28 @@ interface ItemSelectorCardProps {
   items: Item[]
 }
 
-const ControlledSwitch: Component = () => {
+interface ItemSwitchProps {
+  /**
+   * Offers items to be enabled / disabled via switch.
+   */
+  items: Item[]
+}
+
+const ItemSwitch: Component<ItemSwitchProps> = ( props ) => {
   const [checked, setChecked] = createSignal(false);
+
+  createEffect (
+    /**
+     * if checked, switch items on, otherwise switch items off.
+     */
+    () => {
+      if (checked()) {
+        props.items.forEach(item => {
+          item.switch_off()
+        });
+      }
+    }
+  )
 
   return (
     <Switch
@@ -84,7 +104,7 @@ const ItemCardMenu: Component<ItemCardMenuProps> = ( props ) => {
                 { 
                   if (i()==0) {
                   // Switch option
-                  return <div class="item-option mx-2"><ControlledSwitch /></div>
+                  return <div class="item-option mx-2"><ItemSwitch items={ props.items } /></div>
                 } else {
                   return <div class="item-option mx-2"><img src={ item_option.symbol_src } alt={ item_option.name} /></div>
                 }}

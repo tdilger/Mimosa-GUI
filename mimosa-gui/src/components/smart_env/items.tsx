@@ -10,6 +10,7 @@ export class Item {
     name: string
     readonly img?: string
     readonly options?: ItemOption[]
+    state: boolean = false
 
     constructor(id: string, type: Item.Type, name: string) {
         this.id = id
@@ -18,6 +19,14 @@ export class Item {
         let item_map = Item.ItemMapper(type)
         this.img = item_map.img
         this.options = item_map.options
+    }
+
+    switch_on() {
+        this.state = true
+    }
+
+    switch_off() {
+        this.state = false
     }
 }
 
