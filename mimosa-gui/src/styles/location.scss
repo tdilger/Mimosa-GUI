@@ -50,12 +50,6 @@
     position: fixed; /* Sit on top of the page content */
     display: none; /* Hidden by default */
 
-    img {
-        min-width: 80px;
-        max-width: 120px;
-        aspect-ratio: 1/1;
-    }
-
     #overlay-background {
         background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     }
@@ -65,5 +59,24 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        height: 25%;
+        z-index: 5;
+        padding: 10px 30px;
+        min-width: 250px;
+        min-height: 250px;
+        background-color: rgba(255,255,255,0.85);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        display: none;
+
+        .title {
+            margin-bottom: 10px;
+        }
+
+        img {
+            min-width: 80px;
+            max-width: 120px;
+            height: 100%;
+            aspect-ratio: 1/1;
+        }
     }
 }

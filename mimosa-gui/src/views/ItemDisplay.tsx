@@ -13,17 +13,28 @@ export const [selected_item, set_selected_item]: [() => Item, (item: Item) => vo
 createEffect (
     /**
      * Open item option overlay when item clicked.
+     * If only a single option is available, option action will be triggered
      */
     () => {
         console.log("effect ausgelöst, clicked item: ", clicked_item())
-        if (clicked_item() != null) {
-            console.log("item clicked: ", clicked_item())
+        let clicked: Item = clicked_item()
+        if (clicked != null) {
+            console.log("item clicked: ", clicked)
+            if (clicked.options?.length == 1) {
+                // Only one option available -> Trigger option action
+                console.log("Only one option. action ", clicked.options[0].action.name, " triggered from option ", clicked.options[0])
+                clicked.options[0].action()
+                return
+            }
             item_options_overlay_on()
         }
     }
 )
 
 createEffect (
+    /**
+     * Show control of selection option (e.g. change color).
+     */
     () => {
         if (selected_option() != null) {
             console.log("selected option: ", selected_option())
