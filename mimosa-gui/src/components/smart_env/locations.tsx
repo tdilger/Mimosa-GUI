@@ -1,6 +1,7 @@
 import { Viewport } from "../../utils/layout"
 import { createFieldMatrix, Field } from "../../views/fields"
-import { DEFAULT_ITEMS, Item } from "./items"
+import { DEFAULT_ITEMS } from "./defaultItems"
+import { Item } from "./items"
 
 export class Location {
     /**

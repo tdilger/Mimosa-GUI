@@ -1,5 +1,5 @@
 import IconButton from "@suid/material/IconButton"
-import { Component, For, JSX } from "solid-js"
+import { Component, createEffect, createSignal, For, JSX } from "solid-js"
 import Item from "../components/smart_env/items"
 import { Decoration, Field } from "./fields"
 import { set_clicked_item } from "./ItemDisplay"
@@ -9,12 +9,29 @@ interface ItemOnFieldProps {
 }
 
 const ItemOnField: Component<ItemOnFieldProps> = ( props ) => {
+    let item = props.item
+    /**
+     * DOM Elements of items on Field.
+     */
+    const [enabled, setEnabled]: [() => boolean, () => void] = createSignal(props.item.state)
+    const [itemImg, setItemImg] = createSignal(props.item.img)
+
+    createEffect(
+        () => {
+            if (enabled()) {
+                setItemImg(item.img_enabled)
+            } else {
+                setItemImg(item.img)
+            }
+        }
+    )
+
     let img_alt: string = props.item.type + " " + props.item.name
     
     return (
         <IconButton onClick={ () => set_clicked_item(props.item) } 
             sx={{width: '60%', height: '60%', padding: '10% 10%'}} >
-            <img src={props.item.img} class="w-full h-full" alt={img_alt} />
+            <img src={itemImg()} class="w-full h-full" alt={img_alt} />
         </IconButton>
     )
 }
@@ -24,6 +41,9 @@ interface FieldViewProps {
 }
 
 const FieldView: Component<FieldViewProps> = ( props ) => {
+    /**
+     * DOM representation of a single field in itemDisplay.
+     */
     return (
         <div class="field">
             <div class="fieldContent">

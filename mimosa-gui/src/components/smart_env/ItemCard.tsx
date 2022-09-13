@@ -6,9 +6,10 @@ import ItemCardMenu from '../navigation/menus/ItemCardMenu';
 import Slide from '@suid/material/Slide';
 import CardMedia from '@suid/material/CardMedia';
 import Popover from '@suid/material/Popover';
+import DefaultItem from './defaultItems';
 
 export interface ItemProps {
-    item_type: Item.Type
+    item_type: DefaultItem.Type
 }
   
 export const ItemIcon: Component<ItemProps> = ( props ) => {
@@ -16,7 +17,7 @@ export const ItemIcon: Component<ItemProps> = ( props ) => {
      * Display item icon (light, power plugger...).
      */
     console.log("icon item type: ", props.item_type)
-    let { type, img, options } = Item.ItemMapper(props.item_type)
+    let { type, img, options } = DefaultItem.ItemMapper(props.item_type)
     let img_alt = "Symbol " + type
     return (
         <div class="ItemIcon">
@@ -31,7 +32,7 @@ export const ItemIcon: Component<ItemProps> = ( props ) => {
 }
 
 interface ItemCardProps {
-    item_type: Item.Type
+    item_type: DefaultItem.Type
     items: Item[]
 }
 

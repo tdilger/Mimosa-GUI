@@ -1,5 +1,5 @@
 import { Component, createEffect, createSignal } from "solid-js"
-import { DEFAULT_ITEMS } from "../components/smart_env/items"
+import { DEFAULT_ITEMS } from "../components/smart_env/defaultItems";
 import { DEFAULT_LOCATIONS, Location } from "../components/smart_env/locations"
 import ItemDisplay from "./ItemDisplay";
 
@@ -66,7 +66,7 @@ export const LocationView: Component = () => {
      */
     return (
         <div id="locationView" class="z-0 relative text-center object-center items-center m-auto overflow-hidden outline-dashed">
-            <div id="locationDisplayName"><h2 class="text-3xl py-5">{ current_location().name }</h2></div>
+            <div id="locationDisplayName"><h2 class="text-3xl py-3">{ current_location().name }</h2></div>
             <div id="locationDisplay" class="relative m-auto outline-dashed" 
             style={{ 'aspect-ratio': `${ current_location().width / current_location().height }` }}>
                 <ItemDisplay viewport={ {width:viewWidth(), height:viewHeight()} } />
