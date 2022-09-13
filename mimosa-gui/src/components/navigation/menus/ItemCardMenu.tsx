@@ -105,7 +105,7 @@ const ItemCardMenu: Component<ItemCardMenuProps> = ( props ) => {
             <For each={ item_options() }>{
               (item_option: ItemOption, i) => 
                 { 
-                  if (i()==0) {
+                  if (item_option.name == ItemOption.NAMES.switch) {
                   // Switch option
                   return <div class="item-option mx-2"><ItemSwitch items={ props.items } /></div>
                 } else {
