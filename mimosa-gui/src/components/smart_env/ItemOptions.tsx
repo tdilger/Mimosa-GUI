@@ -1,6 +1,4 @@
 import { set_selected_option } from "../../views/ItemDisplay"
-import { show_item_clicked_modal } from "./ItemClickedModal"
-import { show_item_option_selection_modal } from "./ItemOptionSelectionModal"
 
 export class ItemOption {
     /**
@@ -54,12 +52,17 @@ export namespace ItemOption {
 
     let item_option_img_path = "src/assets/icons/google-material-icons/"
 
+    export const NAMES = {
+        switch: "Licht anschalten",
+        change_brightness: "Helligkeit einstellen",
+        change_color: "Farbe einstellen"
+    }
     /**
      * Item Options.
      */
-    const SWITCH: ItemOption = new ItemOption("Licht anschalten", handle_option_switch)
-    const CHANGE_BRIGHTNESS: ItemOption = new ItemOption("Helligkeit einstellen", handle_option_change_brightness, item_option_img_path + "BrightnessOption.svg")
-    const CHANGE_COLOR: ItemOption = new ItemOption("Farbe einstellen", handle_option_change_color, item_option_img_path + "ColorPalette.svg")
+    const SWITCH: ItemOption = new ItemOption(NAMES.switch, handle_option_switch)
+    const CHANGE_BRIGHTNESS: ItemOption = new ItemOption(NAMES.change_brightness, handle_option_change_brightness, item_option_img_path + "BrightnessOption.svg")
+    const CHANGE_COLOR: ItemOption = new ItemOption(NAMES.change_color, handle_option_change_color, item_option_img_path + "ColorPalette.svg")
  
     /**
      * Default option assignment to items.

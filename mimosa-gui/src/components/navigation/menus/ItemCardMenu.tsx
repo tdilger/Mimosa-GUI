@@ -24,6 +24,9 @@ interface ItemSwitchProps {
 }
 
 const ItemSwitch: Component<ItemSwitchProps> = ( props ) => {
+  /**
+   * Switch in ItemCardMenu to turn on / off all selected items.
+   */
   const [checked, setChecked] = createSignal(false);
 
   createEffect (

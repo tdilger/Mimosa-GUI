@@ -1,11 +1,10 @@
 import HighlightOff from "@suid/icons-material/HighlightOff";
 import Chip from "@suid/material/Chip"
 import Stack from "@suid/material/Stack"
-import { Component, createEffect, createSignal } from "solid-js"
+import { Component } from "solid-js"
 import { clicked_item, selected_option, set_clicked_item, set_selected_option } from "../../views/ItemDisplay"
-import ItemOption from "./ItemOptions"
 import Item from "./items"
-import { ItemOptionSelectionModal, show_item_option_selection_modal } from "./ItemOptionSelectionModal";
+import { ItemOptionSelectionModal } from "./ItemOptionSelectionModal";
 import { ItemClickedModal } from "./ItemClickedModal";
 
 interface ItemOptionOverlayProps {

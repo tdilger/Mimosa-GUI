@@ -1,8 +1,9 @@
 import Card from "@suid/material/Card"
 import CardContent from "@suid/material/CardContent"
 import IconButton from "@suid/material/IconButton"
+import Switch from "@suid/material/Switch"
 import Typography from "@suid/material/Typography"
-import { Component, For } from "solid-js"
+import { Component, createEffect, createSignal, For } from "solid-js"
 import { ModalCloseButton, ItemDeleteChip, show_item_option_overlay } from "./ItemOptionOverlay"
 import ItemOption from "./ItemOptions"
 import Item from "./items"
@@ -27,6 +28,57 @@ export function show_item_clicked_modal( show: boolean ) {
     item_clicked_modal.style.display = display
 }
 
+interface FieldItemSwitchProps {
+    /**
+     * Offers item to be enabled / disabled via switch.
+     */
+    item: Item
+}
+
+const ItemOptionModalSwitch: Component<FieldItemSwitchProps> = ( props ) => {
+    /**
+     * Switch in ItemCardMenu to turn on / off all selected items.
+     */
+    const [checked, setChecked] = createSignal(false);
+  
+    createEffect (
+      /**
+       * if checked, switch items on, otherwise switch items off.
+       */
+      () => {
+        if (checked()) {
+            props.item.switch_off()
+        }
+      }
+    )
+  
+    return (
+        <Switch sx={{transform: 'translateY(-50%) scale(1.5)'}}
+        checked={checked()}
+        onChange={(event, value) => {
+          setChecked(value);
+        }}
+        inputProps={{ "aria-label": "controlled" }}
+      />
+    );
+}
+
+interface ItemOptionModalViewProps {
+    item: Item
+    option: ItemOption
+}
+
+const ItemOptionModalView: Component<ItemOptionModalViewProps> = ( props ) => {
+    if (props.option.name == ItemOption.NAMES.switch) {
+        return <div class="item-option mx-2"><ItemOptionModalSwitch item={ props.item } /></div>
+    }
+    return (
+        <IconButton sx={{minWidth: '60px', maxWidth: '100px', aspectRatio: '1/1', margin: '10px 25px'}}>
+            <img src={ props.option.symbol_src } onClick={ () => props.option?.action() } alt={ props.option.name } />
+        </IconButton>
+    )
+}
+
 interface ItemClickedModalProps {
     item: Item
 }
@@ -48,9 +100,7 @@ export const ItemClickedModal: Component<ItemClickedModalProps> = ( props ) => {
                 <div class="items-center justify-center m-auto flex">{
                     <For each={ props.item?.options }>{
                         (option: ItemOption) => 
-                            <IconButton sx={{marginX: '10px'}}>
-                                <img src={ option.symbol_src } onClick={ () => option?.action() } alt={ option.name } />
-                            </IconButton>
+                            <ItemOptionModalView item={props.item} option={option} />
                         }
                     </For>
                 }
