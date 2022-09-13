@@ -51,6 +51,7 @@ createEffect (
             return
         }
         console.log("create effect of selected option: ", selected_option())
+        show_item_clicked_modal(false)
         show_item_option_selection_modal(true)
     }
 )

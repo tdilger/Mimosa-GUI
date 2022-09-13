@@ -42,8 +42,6 @@ export namespace ItemOption {
     function handle_option_change_color() {
         console.log("handle change color")
         set_selected_option(this)
-        show_item_clicked_modal(false)
-        show_item_option_selection_modal(true)
     }
 
     /** Mapper for item options. */
