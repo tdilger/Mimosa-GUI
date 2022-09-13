@@ -11,10 +11,10 @@ export class ItemOption {
      */
 
     name: string
-    symbol_src: string
+    symbol_src?: string
     action: Function
 
-    constructor(name: string, symbol_src: string, action: Function) {
+    constructor(name: string, action: Function, symbol_src?: string) {
         this.name = name
         this.symbol_src = symbol_src
         this.action = action
@@ -37,6 +37,7 @@ export namespace ItemOption {
     
     function handle_option_change_brightness() {
         console.log("handle change brightness")
+        set_selected_option(this)
     }
     
     function handle_option_change_color() {
@@ -53,9 +54,12 @@ export namespace ItemOption {
 
     let item_option_img_path = "src/assets/icons/google-material-icons/"
 
-    const SWITCH: ItemOption = new ItemOption("Licht anschalten", item_option_img_path + "", handle_option_switch)
-    const CHANGE_BRIGHTNESS: ItemOption = new ItemOption("Helligkeit einstellen", item_option_img_path + "BrightnessOption.svg", handle_option_change_brightness)
-    const CHANGE_COLOR: ItemOption = new ItemOption("Farbe einstellen", item_option_img_path + "", handle_option_change_color)
+    /**
+     * Item Options.
+     */
+    const SWITCH: ItemOption = new ItemOption("Licht anschalten", handle_option_switch)
+    const CHANGE_BRIGHTNESS: ItemOption = new ItemOption("Helligkeit einstellen", handle_option_change_brightness, item_option_img_path + "BrightnessOption.svg")
+    const CHANGE_COLOR: ItemOption = new ItemOption("Farbe einstellen", handle_option_change_color, item_option_img_path + "ColorPalette.svg")
  
     /**
      * Default option assignment to items.
