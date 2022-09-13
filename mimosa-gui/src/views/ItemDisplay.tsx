@@ -1,14 +1,21 @@
 import { Component, createEffect, createSignal } from 'solid-js';
-import { createFields, Field } from './fields';
+import { Field } from './fields';
 import { Viewport } from '../utils/layout';
 import { current_location } from './LocationView';
-import { Item } from '../components/smart_env/items';
-import { item_options_overlay_on, selected_option, set_selected_option } from '../components/smart_env/ItemOptionBackdrop';
+import Item from '../components/smart_env/items';
+import { show_item_clicked_modal } from '../components/smart_env/ItemClickedModal';
+import { createFields } from './fieldView';
+import ItemOption from '../components/smart_env/ItemOptions';
+import { show_item_option_selection_modal } from '../components/smart_env/ItemOptionSelectionModal';
+
+// Item selected via ItemCardMenu
+export const [selected_item, set_selected_item]: [() => Item, (item: Item) => void] = createSignal(null)
 
 // Item clicked in itemDisplay on field
 export const [clicked_item, set_clicked_item]: [() => Item, (item: Item) => void] = createSignal(null)
-// Item selected via ItemCardMenu
-export const [selected_item, set_selected_item]: [() => Item, (item: Item) => void] = createSignal(null)
+
+// Selected option in item option modal when item clicked
+export const [selected_option, set_selected_option]: [() => ItemOption, (option: ItemOption) => void] = createSignal(null)
 
 createEffect (
     /**
@@ -18,16 +25,33 @@ createEffect (
     () => {
         let clicked: Item = clicked_item()
         console.log("effect ausgelöst, clicked item: ", clicked)
-        if (clicked != null) {
-            console.log("item clicked: ", clicked)
-            if (clicked.options?.length == 1) {
-                // Only one option available -> Trigger option action
-                console.log("Only one option. action ", clicked.options[0].action.name, " triggered from option ", clicked.options[0])
-                clicked.options[0].action()
-                return
-            }
-            item_options_overlay_on()
+        if (clicked == null) {
+            show_item_clicked_modal(false)
+            return
         }
+
+        console.log("item clicked: ", clicked)
+        if (clicked.options?.length == 1) {
+            // Only one option available -> Trigger option action
+            console.log("Only one option. action ", clicked.options[0].action.name, " triggered from option ", clicked.options[0])
+            clicked.options[0].action()
+            return
+        }
+        show_item_clicked_modal(true)
+    }
+)
+
+createEffect (
+    /**
+     * Show control functions of selected option (e.g. change color by color picker).
+     */
+    () => {
+        if (selected_option() == null) {
+            show_item_option_selection_modal(false)
+            return
+        }
+        console.log("create effect of selected option: ", selected_option())
+        show_item_option_selection_modal(true)
     }
 )
 

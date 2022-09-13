@@ -1,4 +1,4 @@
-import { ItemOption } from "./ItemOptions"
+import ItemOption from "./ItemOptions"
 
 
 export class Item {
@@ -66,6 +66,8 @@ export namespace Item {
         return item_map
     }
 }
+
+export default Item
  
 /**
  * Default Items.

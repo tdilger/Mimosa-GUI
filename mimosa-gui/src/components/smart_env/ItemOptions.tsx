@@ -1,4 +1,6 @@
-import { hide_item_option_backdrop, set_selected_option } from "./ItemOptionBackdrop"
+import { set_selected_option } from "../../views/ItemDisplay"
+import { show_item_clicked_modal } from "./ItemClickedModal"
+import { show_item_option_selection_modal } from "./ItemOptionSelectionModal"
 
 export class ItemOption {
     /**
@@ -19,6 +21,8 @@ export class ItemOption {
     }
 }
 
+export default ItemOption
+
 export namespace ItemOption {
     /**
      * Default options.
@@ -38,7 +42,8 @@ export namespace ItemOption {
     function handle_option_change_color() {
         console.log("handle change color")
         set_selected_option(this)
-        hide_item_option_backdrop()
+        show_item_clicked_modal(false)
+        show_item_option_selection_modal(true)
     }
 
     /** Mapper for item options. */

@@ -5,7 +5,7 @@ import Navigation from './components/navigation/Navigation';
 import SpeechInput from './components/SpeechInput';
 import { LocationView } from './views/LocationView';
 import './style.scss'
-import ItemOptionOverlay from './components/smart_env/ItemOptionBackdrop';
+import ItemOptionOverlay from './components/smart_env/ItemOptionOverlay';
 import { useTheme } from '@suid/material';
 
 /**
