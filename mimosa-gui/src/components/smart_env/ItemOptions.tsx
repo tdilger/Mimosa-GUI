@@ -1,4 +1,5 @@
 import { set_selected_option } from "../../views/ItemDisplay"
+import Item from "./items"
 
 export class ItemOption {
     /**

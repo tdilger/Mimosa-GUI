@@ -12,7 +12,7 @@ export class Item {
     readonly img?: string
     readonly img_enabled?: string
     readonly options?: ItemOption[]
-    state: boolean = false
+    enabled: boolean = false
 
     constructor(id: string, type: DefaultItem.Type, name: string) {
         this.id = id
@@ -24,11 +24,13 @@ export class Item {
     }
 
     switch_on() {
-        this.state = true
+        this.enabled = true
+        console.log("item ", this.name, " enabled.")
     }
 
     switch_off() {
-        this.state = false
+        this.enabled = false
+        console.log("item ", this.name, " disabled.")
     }
 }
 

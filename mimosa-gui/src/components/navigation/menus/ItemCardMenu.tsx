@@ -7,14 +7,8 @@ import Switch from "@suid/material/Switch";
 import { Component, For, createSignal, createEffect } from "solid-js";
 import { ItemOption } from "../../smart_env/ItemOptions";
 import { Item } from "../../smart_env/items";
+import DefaultItem from "../../smart_env/defaultItems";
 
-
-interface ItemSelectorCardProps {
-  /**
-   * Offers items of one type to be handed to ItemSelectorCard.
-   */
-  items: Item[]
-}
 
 interface ItemSwitchProps {
   /**
@@ -36,7 +30,7 @@ const ItemSwitch: Component<ItemSwitchProps> = ( props ) => {
     () => {
       if (checked()) {
         props.items.forEach(item => {
-          item.switch_off()
+          item.switch_on()
         });
       }
     }
@@ -44,7 +38,7 @@ const ItemSwitch: Component<ItemSwitchProps> = ( props ) => {
 
   return (
     <Switch
-      sx={{transform: 'translateY(-50%) scale(1.5)'}}
+      sx={{transform: 'translateY(-50%) scale(1.4)'}}
       checked={checked()}
       onChange={(event, value) => {
         setChecked(value);
@@ -56,6 +50,13 @@ const ItemSwitch: Component<ItemSwitchProps> = ( props ) => {
 
 function handle_item_selection(event: Event) {
   console.log("handle item selection target: ", event.currentTarget)
+}
+
+interface ItemSelectorCardProps {
+  /**
+   * Offers items of one type to be handed to ItemSelectorCard.
+   */
+  items: Item[]
 }
 
 const ItemSelectorCard: Component<ItemSelectorCardProps> = ( props ) => {
@@ -77,11 +78,11 @@ const ItemSelectorCard: Component<ItemSelectorCardProps> = ( props ) => {
     }</For>
 }
 
-export interface ItemCardMenuProps {
+interface ItemCardMenuProps {
     /**
      * Make location accessible to components.
      */
-    item_type: Item.Type
+    item_type: DefaultItem.Type
     items: Item[]
 }
 
@@ -91,7 +92,7 @@ const ItemCardMenu: Component<ItemCardMenuProps> = ( props ) => {
    * Displays items of the specified type to adjust at once
    */
   let item_options = () => {
-    return Item.ItemMapper(props.item_type).options
+    return DefaultItem.ItemMapper(props.item_type).options
   }
   console.log("item options: ", item_options())
   return (

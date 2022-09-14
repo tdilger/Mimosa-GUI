@@ -4,6 +4,7 @@ import IconButton from "@suid/material/IconButton"
 import Switch from "@suid/material/Switch"
 import Typography from "@suid/material/Typography"
 import { Component, createEffect, createSignal, For } from "solid-js"
+import { set_item_changed } from "../../views/fieldView"
 import { ModalCloseButton, ItemDeleteChip, show_item_option_overlay } from "./ItemOptionOverlay"
 import ItemOption from "./ItemOptions"
 import Item from "./items"
@@ -39,15 +40,26 @@ const ItemOptionModalSwitch: Component<FieldItemSwitchProps> = ( props ) => {
     /**
      * Switch in ItemCardMenu to turn on / off all selected items.
      */
-    const [checked, setChecked] = createSignal(false);
+    const [checked, setChecked] = createSignal(props.item.enabled);
   
     createEffect (
       /**
        * if checked, switch items on, otherwise switch items off.
        */
       () => {
+        /** @todo: Could probably be enhanced with the if's... */ 
         if (checked()) {
-            props.item.switch_off()
+            console.log("switch to enable item checked: ")
+            if (!props.item.enabled) {
+                props.item.switch_on()
+                set_item_changed(props.item)
+            }
+        } else {
+            console.log("switch to disable item checked: ")
+            if (props.item.enabled) {
+                props.item.switch_off()
+                set_item_changed(props.item)
+            }
         }
       }
     )
@@ -74,7 +86,10 @@ const ItemOptionModalView: Component<ItemOptionModalViewProps> = ( props ) => {
     }
     return (
         <IconButton sx={{minWidth: '60px', maxWidth: '100px', aspectRatio: '1/1', margin: '10px 25px'}}>
-            <img src={ props.option.symbol_src } onClick={ () => props.option?.action() } alt={ props.option.name } />
+            <img src={ props.option.symbol_src } 
+            onClick={ () => { 
+                props.option?.action()
+            } } alt={ props.option.name } />
         </IconButton>
     )
 }

@@ -4,6 +4,8 @@ import Item from "../components/smart_env/items"
 import { Decoration, Field } from "./fields"
 import { set_clicked_item } from "./ItemDisplay"
 
+export const [item_changed, set_item_changed]: [() => Item, (item: Item) => void] = createSignal(null)
+
 interface ItemOnFieldProps {
     item: Item
 }
@@ -13,16 +15,21 @@ const ItemOnField: Component<ItemOnFieldProps> = ( props ) => {
     /**
      * DOM Elements of items on Field.
      */
-    const [enabled, setEnabled]: [() => boolean, () => void] = createSignal(props.item.state)
     const [itemImg, setItemImg] = createSignal(props.item.img)
 
     createEffect(
         () => {
-            if (enabled()) {
-                setItemImg(item.img_enabled)
-            } else {
-                setItemImg(item.img)
+            console.log("item changed: ", item_changed(), " object on: ", item_changed(), " current item: ", item)
+            if (item_changed() == item) {
+                console.log("item clicked, field item effect. enabled: ", item.enabled)
+                if (item.enabled == true) {
+                    setItemImg(item.img_enabled)
+                } else {
+                    setItemImg(item.img)
+                }
             }
+            // Change set_item_changed back to null after changing to be able to change the same item more than once
+            set_item_changed(null)
         }
     )
 
