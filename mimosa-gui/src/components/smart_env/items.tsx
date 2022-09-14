@@ -20,6 +20,7 @@ export class Item {
         this.name = name
         let item_map = DefaultItem.ItemMapper(type)
         this.img = item_map.img
+        this.img_enabled = item_map.img_enabled
         this.options = item_map.options
     }
 

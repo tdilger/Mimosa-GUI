@@ -24,6 +24,7 @@ const ItemOnField: Component<ItemOnFieldProps> = ( props ) => {
                 console.log("item clicked, field item effect. enabled: ", item.enabled)
                 if (item.enabled == true) {
                     setItemImg(item.img_enabled)
+                    console.log("new item img: ", itemImg(), " img enabled: ", item.img_enabled)
                 } else {
                     setItemImg(item.img)
                 }

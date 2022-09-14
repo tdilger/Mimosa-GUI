@@ -14,28 +14,29 @@ namespace DefaultItem {
     /**
      * Currently supported items.
      */
-     const LIGHT = {type: Type.light, img: "src/assets/icons/google-material-icons/lightbulb.svg", img_enabled: "", options: ItemOption.LIGHT_OPTIONS}
-     const COLORABLE_LIGHT = {type: Type.colorable_light, img: "src/assets/icons/google-material-icons/lightbulb.svg", options: ItemOption.COLORABLE_LIGHT_OPTIONS}
-     const PLUG = {type: Type.plug, img: "src/assets/icons/google-material-icons/power.svg", options: ItemOption.PLUG_OPTIONS}
-     const ITEM_MAP = [ LIGHT, COLORABLE_LIGHT, PLUG ]
- 
-     export function ItemMapper(item_type: Type): {type: Type, img: string, options: ItemOption[]} {
-         /**
-          * Provides item img and options given ItemType.
-          * @param item_type: type of item (e.g. light)
-          * @returns item_map: map of specific item type values.
-          */
-         let items_map: {type: Type, img: string, options: ItemOption[]}[] = ITEM_MAP
-         let item_map: {type: Type, img: string, options: ItemOption[]}
-         console.log("item map: ", items_map)
-         items_map.forEach(item => {
-             if (item.type == item_type) {
-                 console.log("item: ", item.type, " item_type: ", item_type)
-                 item_map = item
-             }
-         });
-         return item_map
-     }
+    let item_img_path: string = "src/assets/icons/google-material-icons/"
+    const LIGHT = {type: Type.light, img: item_img_path + "lightbulb.svg", img_enabled: item_img_path + "lightbulb_enabled.svg", options: ItemOption.LIGHT_OPTIONS}
+    const COLORABLE_LIGHT = {type: Type.colorable_light, img: item_img_path + "lightbulb.svg", img_enabled: item_img_path + "lightbulb_enabled.svg", options: ItemOption.COLORABLE_LIGHT_OPTIONS}
+    const PLUG = {type: Type.plug, img: item_img_path + "power.svg", img_enabled: item_img_path + "power_enabled.svg", options: ItemOption.PLUG_OPTIONS}
+    const ITEM_MAP = [ LIGHT, COLORABLE_LIGHT, PLUG ]
+
+    export function ItemMapper(item_type: Type): {type: Type, img: string, img_enabled: string, options: ItemOption[]} {
+        /**
+         * Provides item img and options given ItemType.
+         * @param item_type: type of item (e.g. light)
+         * @returns item_map: map of specific item type values.
+         */
+        let items_map: {type: Type, img: string, img_enabled: string, options: ItemOption[]}[] = ITEM_MAP
+        let item_map: {type: Type, img: string, img_enabled: string, options: ItemOption[]}
+        console.log("item map: ", items_map)
+        items_map.forEach(item => {
+            if (item.type == item_type) {
+                console.log("item: ", item.type, " item_type: ", item_type)
+                item_map = item
+            }
+        });
+        return item_map
+    }
 }
 
 export default DefaultItem

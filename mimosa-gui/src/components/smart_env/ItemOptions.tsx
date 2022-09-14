@@ -32,6 +32,7 @@ export namespace ItemOption {
     /** Functions when setting an option with ItemOptionBackdrop. */
     function handle_option_switch() {
         console.log("handle switch")
+        // set item.enabled to true or false respectively
     }
     
     function handle_option_change_brightness() {
