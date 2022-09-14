@@ -101,7 +101,7 @@ export const ItemCard: Component<ItemCardProps> = ( props ) => {
             </ItemCardBadge>
             <Popover id={id()} open={open()} onClose={handleClose} 
             anchorEl={anchorEl()} anchorOrigin={{ vertical: "bottom", horizontal: "left"}}>
-                <Slide direction="down" in={open()} container={anchorEl()}>
+                <Slide direction="down" in={open()} container={anchorEl()} mountOnEnter unmountOnExit>
                     <ItemCardMenu item_type={ item_type } items={ items } />
                 </Slide>
             </Popover>

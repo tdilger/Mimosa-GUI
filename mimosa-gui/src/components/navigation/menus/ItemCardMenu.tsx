@@ -96,7 +96,7 @@ const ItemCardMenu: Component<ItemCardMenuProps> = ( props ) => {
   }
   console.log("item options: ", item_options())
   return (
-    <Card sx={{ display: "flex", flexDirection: "column" }}>
+    <Card class="item-card-menu" sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
         <Typography component="div" variant="h5">
             { props.item_type }

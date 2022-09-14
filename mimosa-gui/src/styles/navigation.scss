@@ -72,6 +72,27 @@
         }
     }
 }
+/* Card expands with inner margin TODO
+.item-card-menu {
+    position: relative;
+    margin:15px auto;
+    padding: 1rem;
+    background-color: #ddd;
+}
+
+// Card menu arrow
+.item-card-menu::before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 40px;
+    top: -17px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 17px solid #ddd;
+}
+*/
 
 .item-option {
     position: relative;
