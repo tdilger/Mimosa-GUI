@@ -1,6 +1,6 @@
 import { Component, For } from 'solid-js';
 import { locations } from '../../../views/LocationView';
-import { LocationCard } from '../../smart_env/LocationCard';
+import { LocationCard } from '../LocationCard';
 import { Location } from '../../smart_env/locations';
 
 

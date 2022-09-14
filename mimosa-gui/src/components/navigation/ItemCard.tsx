@@ -1,12 +1,12 @@
 import { Component, createSignal } from 'solid-js'
 import Badge, { BadgeProps } from '@suid/material/Badge'
 import styled from "@suid/system/styled";
-import { Item } from "./items"
-import ItemCardMenu from '../navigation/menus/ItemCardMenu';
+import { Item } from "../smart_env/items"
+import ItemCardMenu from './menus/ItemCardMenu';
 import Slide from '@suid/material/Slide';
 import CardMedia from '@suid/material/CardMedia';
 import Popover from '@suid/material/Popover';
-import DefaultItem from './defaultItems';
+import DefaultItem from '../smart_env/defaultItems';
 
 export interface ItemProps {
     item_type: DefaultItem.Type
