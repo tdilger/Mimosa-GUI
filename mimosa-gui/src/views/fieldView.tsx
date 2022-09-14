@@ -19,7 +19,7 @@ const ItemOnField: Component<ItemOnFieldProps> = ( props ) => {
 
     createEffect(
         () => {
-            console.log("item changed: ", item_changed(), " object on: ", item_changed(), " current item: ", item)
+            console.log("item changed: ", item_changed(), " current item: ", item)
             if (item_changed() == item) {
                 console.log("item clicked, field item effect. enabled: ", item.enabled)
                 if (item.enabled == true) {
@@ -27,9 +27,10 @@ const ItemOnField: Component<ItemOnFieldProps> = ( props ) => {
                 } else {
                     setItemImg(item.img)
                 }
+                // Change set_item_changed back to null after successful changing 
+                // to be able to change the same item more than once
+                set_item_changed(null)
             }
-            // Change set_item_changed back to null after changing to be able to change the same item more than once
-            set_item_changed(null)
         }
     )
 

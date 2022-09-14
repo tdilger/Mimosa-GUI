@@ -49,13 +49,13 @@ const ItemOptionModalSwitch: Component<FieldItemSwitchProps> = ( props ) => {
       () => {
         /** @todo: Could probably be enhanced with the if's... */ 
         if (checked()) {
-            console.log("switch to enable item checked: ")
+            console.log("switch to enable item checked")
             if (!props.item.enabled) {
                 props.item.switch_on()
                 set_item_changed(props.item)
             }
         } else {
-            console.log("switch to disable item checked: ")
+            console.log("switch to disable item checked")
             if (props.item.enabled) {
                 props.item.switch_off()
                 set_item_changed(props.item)
