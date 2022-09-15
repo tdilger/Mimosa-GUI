@@ -1,5 +1,4 @@
-import { set_selected_option } from "../../views/ItemDisplay"
-import Item from "./items"
+import { ItemActions } from "./itemActions"
 
 export class ItemOption {
     /**
@@ -30,27 +29,6 @@ export namespace ItemOption {
      */
 
     /** Functions when setting an option with ItemOptionBackdrop. */
-    function handle_option_switch() {
-        console.log("handle switch")
-        // set item.enabled to true or false respectively
-    }
-    
-    function handle_option_change_brightness() {
-        console.log("handle change brightness")
-        set_selected_option(this)
-    }
-    
-    function handle_option_change_color() {
-        console.log("handle change color")
-        set_selected_option(this)
-    }
-
-    /** Mapper for item options. */
-    export const handle_option = {
-        switch: handle_option_switch,
-        change_brightness: handle_option_change_brightness,
-        change_color: handle_option_change_color
-    }
 
     let item_option_img_path = "src/assets/icons/google-material-icons/"
 
@@ -62,9 +40,9 @@ export namespace ItemOption {
     /**
      * Item Options.
      */
-    const SWITCH: ItemOption = new ItemOption(NAMES.switch, handle_option_switch)
-    const CHANGE_BRIGHTNESS: ItemOption = new ItemOption(NAMES.change_brightness, handle_option_change_brightness, item_option_img_path + "BrightnessOption.svg")
-    const CHANGE_COLOR: ItemOption = new ItemOption(NAMES.change_color, handle_option_change_color, item_option_img_path + "ColorPalette.svg")
+    const SWITCH: ItemOption = new ItemOption(NAMES.switch, ItemActions.ACTIONS.switch)
+    const CHANGE_BRIGHTNESS: ItemOption = new ItemOption(NAMES.change_brightness, ItemActions.ACTIONS.change_brightness, item_option_img_path + "BrightnessOption.svg")
+    const CHANGE_COLOR: ItemOption = new ItemOption(NAMES.change_color, ItemActions.ACTIONS.change_color, item_option_img_path + "ColorPalette.svg")
  
     /**
      * Default option assignment to items.

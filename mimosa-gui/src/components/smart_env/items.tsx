@@ -24,6 +24,10 @@ export class Item {
         this.options = item_map.options
     }
 
+    handle_action() {
+
+    }
+
     switch_on() {
         this.enabled = true
         console.log("item ", this.name, " enabled.")
