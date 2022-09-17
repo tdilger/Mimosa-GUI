@@ -28,6 +28,10 @@ export class Item {
 
     }
 
+    switch() {
+        this.enabled = !this.enabled
+    }
+
     switch_on() {
         this.enabled = true
         console.log("item ", this.name, " enabled.")

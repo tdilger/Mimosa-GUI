@@ -34,7 +34,8 @@ createEffect (
         if (clicked.options?.length == 1) {
             // Only one option available -> Trigger option action
             console.log("Only one option. action ", clicked.options[0].action.name, " triggered from option ", clicked.options[0])
-            clicked.options[0].action()
+            clicked.options[0].action(clicked)
+            set_clicked_item(null)
             return
         }
         show_item_clicked_modal(true)
@@ -91,8 +92,6 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
         /** Change row and column for grid template when location changes. */
         set_row_field_no(current_location().fields.length)
         set_column_field_no(current_location().fields[0].length)
-        console.log("row fields: ", row_field_no, ", column fields: ", column_field_no)
-        console.log(current_location().name, " fields: ", current_location().fields)
     })
     
     return (

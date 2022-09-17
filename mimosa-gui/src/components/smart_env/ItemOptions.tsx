@@ -10,9 +10,9 @@ export class ItemOption {
 
     name: string
     symbol_src?: string
-    action: Function
+    action: (item) => any
 
-    constructor(name: string, action: Function, symbol_src?: string) {
+    constructor(name: string, action: (item) => any, symbol_src?: string) {
         this.name = name
         this.symbol_src = symbol_src
         this.action = action

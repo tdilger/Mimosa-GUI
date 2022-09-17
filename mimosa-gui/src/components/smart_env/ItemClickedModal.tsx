@@ -25,7 +25,7 @@ export function show_item_clicked_modal( show: boolean ) {
         show_item_option_overlay(false)
         return
     }
-    show_item_option_overlay(true)
+    show_item_option_overlay(show)
     item_clicked_modal.style.display = display
 }
 
@@ -42,6 +42,7 @@ const ItemOptionModalSwitch: Component<FieldItemSwitchProps> = ( props ) => {
      */
     const [checked, setChecked] = createSignal(props.item.enabled);
   
+    console.log("modal switch item: ", props.item.name)
     createEffect (
       /**
        * if checked, switch items on, otherwise switch items off.
@@ -88,7 +89,7 @@ const ItemOptionModalView: Component<ItemOptionModalViewProps> = ( props ) => {
         <IconButton sx={{minWidth: '60px', maxWidth: '100px', aspectRatio: '1/1', margin: '10px 25px'}}>
             <img src={ props.option.symbol_src } 
             onClick={ () => { 
-                props.option?.action()
+                props.option?.action(props.item)
             } } alt={ props.option.name } />
         </IconButton>
     )
