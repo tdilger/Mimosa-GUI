@@ -25,7 +25,7 @@ export const theme = useTheme();
 
 const App: Component = () => {
   return (
-    <div class="overflow-hidden" style="width: 100vw; height: 100vh;">
+    <div class="overflow-hidden bg-primary" style="width: 100vw; height: 100vh;">
       <Navigation />
       <SettingsMenu />
       <Routes>

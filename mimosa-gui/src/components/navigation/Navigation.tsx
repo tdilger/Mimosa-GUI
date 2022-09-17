@@ -13,7 +13,7 @@ const Navigation: Component = () => {
      * Use of Suspense i.o. to reveal async content needs to be loaded
      */
     return (
-        <nav id="mainNavigation" class="z-30 relative w-full px-10">
+        <nav id="mainNavigation" class="z-30 relative w-full px-10 bg-secondary">
             <Suspense fallback={<div class="loader">Lädt...</div>}>
                 <Switch fallback={<ItemMenu />}>
                     <Match when={ locationMenuOpen() }>
