@@ -15,10 +15,14 @@ module.exports = {
     colors: {
       'white': '#ffffff',
       'blue': '#1fb6ff',
+      'accent': '#496B72',
+      'primary': '#FFFADE',
+      'secondary': '',
+      'neutral': '',
+      'contrast': ''
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      poppins: ['Poppins', 'sans-serif'],
     },
     extend: {
       spacing: {
@@ -32,3 +36,4 @@ module.exports = {
   },
   plugins: [],
 };
+
