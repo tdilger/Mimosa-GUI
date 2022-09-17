@@ -20,6 +20,7 @@ module.exports = {
       'accent': '#496B72',
       'primary': 'var(--color-primary)',
       'secondary': 'var(--color-secondary)',
+      'secondary-dark': 'var(--color-secondary-dark)',
       'neutral': 'var(--color-neutral)',
       'contrast': 'var(--color-contrast)',
       'item-enabled': 'var(--color-item-enabled)',

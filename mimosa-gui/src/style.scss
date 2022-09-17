@@ -5,15 +5,16 @@
 @import "styles/location.scss";
 
 :root {
---color-primary: #FFFADE;
---color-secondary: #6B8F8C;
---color-neutral: rgba(75, 0, 130, 0.1);
---color-neutral-dark: #BEB5AA;
---color-contrast: #4B0082;
---color-item-enabled: #F9F871;
---color-card-selected: rgba(255,255,255,0.9);
---color-card: rgba(255,255,255,0.8);
-/* ... */
+    /** Color Scheme */
+    --color-primary: rgb(255, 250, 222);
+    --color-secondary: #6B8F8C;
+    --color-secondary-dark: #496B72;
+    --color-neutral: rgba(75, 0, 130, 0.1);
+    --color-neutral-dark: #BEB5AA;
+    --color-contrast: #4B0082;
+    --color-item-enabled: #F9F871;
+    --color-card-selected: rgba(255,255,255,0.9);
+    --color-card: rgba(255,255,255,0.8);
 }
 
 

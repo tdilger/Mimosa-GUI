@@ -95,7 +95,7 @@ const ItemDisplay: Component<ItemDisplayProps> = ( props ) => {
     })
     
     return (
-        <div id="itemDisplay" class="m-auto bg-neutral" 
+        <div id="itemDisplay" class="m-auto rounded-sm bg-neutral" 
         style={{
         'aspect-ratio': `${ current_location().width / current_location().height}`,
         'display': 'grid', 

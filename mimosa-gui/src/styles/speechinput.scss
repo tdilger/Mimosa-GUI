@@ -1,11 +1,18 @@
-#speechInput {
+#speechInputField {
     width: $speechInputSize;
     height: $speechInputSize;
+
+    #speechInput {
+        box-shadow: -1px 2px 15px rgba(200, 190, 160, 0.1), 
+                    1px 2px 15px rgba(200, 190, 160, 0.1),
+                    -1px -2px 20px rgba(230, 220, 190, 0.1),
+                    1px -2px 20px rgba(230, 220, 190, 0.1);   
+    }
 }
 
 #speechInputContent {
     width: 100%;
     position: absolute;
     top: 50%;
-    transform: translate(0, -50%)
+    transform: translate(0, -50%);
 }
