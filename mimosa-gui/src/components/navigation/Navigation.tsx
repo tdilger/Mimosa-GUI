@@ -24,7 +24,7 @@ const Navigation: Component = () => {
                     </Match>
                 </Switch>
             </Suspense>
-            <div id="settings-icon" class="absolute right-6 items-center cursor-pointer outline-dashed" 
+            <div id="settings-icon" class="absolute right-6 items-center cursor-pointer" 
             onclick={ settings_overlay_on }>
                 <img src="src/assets/elements/settings.svg" alt="Einstellungen" />
             </div>

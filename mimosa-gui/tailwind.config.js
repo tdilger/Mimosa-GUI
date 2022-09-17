@@ -19,7 +19,7 @@ module.exports = {
       'primary': '#FFFADE',
       'secondary': '',
       'neutral': '',
-      'contrast': ''
+      'contrast': '',
     },
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],
@@ -35,5 +35,4 @@ module.exports = {
     }
   },
   plugins: [],
-};
-
+}

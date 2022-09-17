@@ -4,7 +4,7 @@ import { Component } from 'solid-js';
 
 const SpeechInput: Component = () => {
     return (
-        <div id="speechInput" class="absolute bottom-8 m-auto left-0 right-0 text-center align-middle outline-dotted">
+        <div id="speechInput" class="absolute bottom-8 m-auto left-0 right-0 text-center align-middle">
             <div class="bg-blue b w-full h-full rounded-3xl">
                 <div id="speechInputContent">
                     <IconButton aria-label="speech-input" color="primary">

@@ -34,13 +34,12 @@ const ItemOnField: Component<ItemOnFieldProps> = ( props ) => {
             }
         }
     )
-
+        // 
     let img_alt: string = props.item.type + " " + props.item.name
     return (
         <IconButton onClick={ () => {
             set_clicked_item(props.item)
-        } } 
-            sx={{width: '60%', height: '60%', padding: '10% 10%'}} >
+        } } sx={{width: '60%', height: '60%', aspectRatio: '1/1', padding: '10% 10%'}} >
             <img src={itemImg()} class="w-full h-full" alt={img_alt} />
         </IconButton>
     )
