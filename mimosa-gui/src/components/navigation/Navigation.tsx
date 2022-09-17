@@ -1,5 +1,5 @@
 import { Component, createSignal, Match, Suspense, Switch } from 'solid-js';
-import { settings_overlay_on } from '../menus/settings_menu/SettingsMenu';
+import { settings_overlay_on } from '../settings/SettingsMenu';
 import ItemMenu from './menus/ItemMenu';
 import LocationMenu from './menus/LocationMenu';
 

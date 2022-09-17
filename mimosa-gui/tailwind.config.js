@@ -1,3 +1,5 @@
+const { readBuilderProgram } = require('typescript');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -16,10 +18,13 @@ module.exports = {
       'white': '#ffffff',
       'blue': '#1fb6ff',
       'accent': '#496B72',
-      'primary': '#FFFADE',
-      'secondary': '',
-      'neutral': '',
-      'contrast': '',
+      'primary': 'var(--color-primary)',
+      'secondary': 'var(--color-secondary)',
+      'neutral': 'var(--color-neutral)',
+      'contrast': 'var(--color-contrast)',
+      'item-enabled': 'var(--color-item-enabled)',
+      'card-selected': 'var(--color-card-selected)',
+      'card': 'var(--color-card)',
     },
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],

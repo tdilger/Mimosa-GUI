@@ -1,12 +1,12 @@
 import { Route, Routes } from '@solidjs/router';
 import { Component, createSignal } from 'solid-js';
-import SettingsMenu from './components/menus/settings_menu/SettingsMenu';
 import Navigation from './components/navigation/Navigation';
 import SpeechInput from './components/SpeechInput';
 import { LocationView } from './views/LocationView';
 import './style.scss'
 import ItemOptionOverlay from './components/smart_env/ItemOptionOverlay';
 import { useTheme } from '@suid/material';
+import SettingsMenu from './components/settings/SettingsMenu';
 
 /**
  * TODO: Create users dynamically

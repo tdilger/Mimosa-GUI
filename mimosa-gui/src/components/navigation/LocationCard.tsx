@@ -16,7 +16,7 @@ export const LocationCard: Component<LocationProps> = (props) => {
      */
     return (
         <>
-            <button class="card locationCard" 
+            <button class="card locationCard bg-card" 
             onclick={ () => { 
                 setLocationMenuOpen((previousOpen) => !previousOpen) 
                 if (props.location != current_location()) {
