@@ -14,7 +14,15 @@
     top: $navHeight;
     right: 0;
     padding: 2em 1em;
-    background-color: var(--color-secondary);   
+    background-color: var(--color-secondary);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: 1s;
+    animation: slide-in duration timing-function delay iteration-count direction fill-mode;
+
+    @keyframes slide-in {
+        0% { right: -100px }
+        100% { right: 0; }
+    }
 
     ul {
         position: relative;

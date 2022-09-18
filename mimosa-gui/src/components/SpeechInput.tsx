@@ -8,7 +8,7 @@ const SpeechInput: Component = () => {
             <div id="speechInput" class="bg-white w-full h-full rounded-4xl">
                 <div id="speechInputContent">
                     <IconButton aria-label="speech-input" color="primary">
-                            <MicIcon sx={{ fontSize: 50, fill: 'var(--color-secondary)' }} />
+                            <MicIcon sx={{ fontSize: 50, fill: 'var(--color-secondary-darker)' }} />
                     </IconButton>
                 </div>
             </div>

@@ -49,9 +49,10 @@ export const ItemCard: Component<ItemCardProps> = ( props ) => {
      * d = a * sqrt(2) with a: side length of the square container
      * r_c = 1/2 * a
      */
-    let p = 10
-    let d = 2
-    let r_c = 2
+    let p = -3
+    let a = 90
+    let d = a * Math.sqrt(2)
+    let r_c = 1/2 * a
     let dist_edge: number = p + (1/2 * d - r_c);
 
     console.log("itemcard, item: ", props.item_type, " amount: ", props.items.length)
@@ -63,8 +64,9 @@ export const ItemCard: Component<ItemCardProps> = ( props ) => {
         '& .MuiBadge-badge': {
           bottom: dist_edge,
           right: dist_edge,
-          border: `2px solid gray`,
-          background: 'rgba(0,0,0,0.4)',
+          border: `1px solid`,
+          borderColor: 'var(--color-contrast)',
+          backgroundColor: 'var(--color-contrast-transparent)',
           color: '#ffffff',
           padding: '0 4px',
         },
