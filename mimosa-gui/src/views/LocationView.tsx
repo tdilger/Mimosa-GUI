@@ -1,9 +1,10 @@
 import { Component, createEffect, createSignal } from "solid-js"
 import { DEFAULT_ITEMS } from "../components/smart_env/defaultItems";
-import { DEFAULT_LOCATIONS, Location } from "../components/smart_env/locations"
+import DefaultLocation from "../components/smart_env/defaultLocations";
+import { Location } from "../components/smart_env/locations"
 import ItemDisplay from "./ItemDisplay";
 
-export const [locations, setLocations] = createSignal(DEFAULT_LOCATIONS)
+export const [locations, setLocations] = createSignal(DefaultLocation.DEFAULT_LOCATIONS)
 export const [items, setItems] = createSignal(DEFAULT_ITEMS)
 
 export const [current_location, setCurrentLocation] = createSignal(locations()[0])

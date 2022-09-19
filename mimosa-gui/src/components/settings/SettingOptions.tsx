@@ -1,3 +1,8 @@
+import userSettings from "../../assets/icons/google-material-icons/UserSettings.svg"
+import colorSettings from "../../assets/icons/google-material-icons/ColorSettings.svg"
+import typogrphySettings from "../../assets/icons/google-material-icons/TypographySettings.svg"
+import powerOffSettings from "../../assets/icons/google-material-icons/PowerOffSettings.svg"
+
 export class Settings {
     name: string
     img: string
@@ -10,11 +15,10 @@ export class Settings {
     }
 }
 
-let settings_img_path = "src/assets/icons/google-material-icons/"
-let user_settings = new Settings("Benutzer", settings_img_path + "UserSettings.svg", handle_user_settings)
-let color_settings = new Settings("Farbe", settings_img_path + "ColorSettings.svg", handle_color_settings)
-let typography_settings = new Settings("Typographie", settings_img_path + "TypographySettings.svg", handle_typography_settings)
-let power_off_settings = new Settings("Ausschalten", settings_img_path + "PowerOffSettings.svg", power_off)
+let user_settings = new Settings("Benutzer", userSettings, handle_user_settings)
+let color_settings = new Settings("Farbe", colorSettings, handle_color_settings)
+let typography_settings = new Settings("Typographie", typogrphySettings, handle_typography_settings)
+let power_off_settings = new Settings("Ausschalten", powerOffSettings, power_off)
 
 export var settings = { 
     user: user_settings, 

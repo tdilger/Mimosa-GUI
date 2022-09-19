@@ -3,6 +3,8 @@ import { settings_overlay_on } from '../settings/SettingsMenu';
 import ItemMenu from './menus/ItemMenu';
 import LocationMenu from './menus/LocationMenu';
 
+import settingsIcon from "../../assets/elements/settings.svg"
+
 export const [locationMenuOpen, setLocationMenuOpen] = createSignal(false)
 
 
@@ -26,7 +28,7 @@ const Navigation: Component = () => {
             </Suspense>
             <div id="settings-icon" class="absolute right-6 items-center cursor-pointer" 
             onclick={ settings_overlay_on }>
-                <img src="src/assets/elements/settings.svg" alt="Einstellungen" />
+                <img src={ settingsIcon } alt="Einstellungen" />
             </div>
         </nav>
     )

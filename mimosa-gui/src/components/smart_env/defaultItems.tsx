@@ -1,6 +1,11 @@
 import ItemOption from "./ItemOptions"
 import Item from "./items"
 
+import lightbulb from "../../assets/icons/google-material-icons/lightbulb.svg"
+import lightbulb_enabled from "../../assets/icons/google-material-icons/lightbulb_enabled.svg"
+import power from "../../assets/icons/google-material-icons/power.svg"
+import power_enabled from "../../assets/icons/google-material-icons/power_enabled.svg"
+
 namespace DefaultItem {
     /**
     * Currently supported item types.
@@ -14,10 +19,9 @@ namespace DefaultItem {
     /**
      * Currently supported items.
      */
-    let item_img_path: string = "src/assets/icons/google-material-icons/"
-    const LIGHT = {type: Type.light, img: item_img_path + "lightbulb.svg", img_enabled: item_img_path + "lightbulb_enabled.svg", options: ItemOption.LIGHT_OPTIONS}
-    const COLORABLE_LIGHT = {type: Type.colorable_light, img: item_img_path + "lightbulb.svg", img_enabled: item_img_path + "lightbulb_enabled.svg", options: ItemOption.COLORABLE_LIGHT_OPTIONS}
-    const PLUG = {type: Type.plug, img: item_img_path + "power.svg", img_enabled: item_img_path + "power_enabled.svg", options: ItemOption.PLUG_OPTIONS}
+    const LIGHT = {type: Type.light, img: lightbulb, img_enabled: lightbulb_enabled, options: ItemOption.LIGHT_OPTIONS}
+    const COLORABLE_LIGHT = {type: Type.colorable_light, img: lightbulb, img_enabled: lightbulb_enabled, options: ItemOption.COLORABLE_LIGHT_OPTIONS}
+    const PLUG = {type: Type.plug, img: power, img_enabled: power_enabled, options: ItemOption.PLUG_OPTIONS}
     const ITEM_MAP = [ LIGHT, COLORABLE_LIGHT, PLUG ]
 
     export function ItemMapper(item_type: Type): {type: Type, img: string, img_enabled: string, options: ItemOption[]} {
