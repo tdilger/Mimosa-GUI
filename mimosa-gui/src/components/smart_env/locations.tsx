@@ -1,5 +1,6 @@
 import { Viewport } from "../../utils/layout"
 import { createFieldMatrix, Field } from "../../views/fields"
+import { DEFAULT_DECORATIONS } from "./defaultDecorations"
 import { DEFAULT_ITEMS } from "./defaultItems"
 import { Item } from "./items"
 
@@ -44,14 +45,7 @@ const LOCATION_ITEM_MAPPINGS = {
    livingroom: [
       {pos:{x:2, y:2}, item: DEFAULT_ITEMS.livingroom[0][0]}, 
       {pos:{x:3, y:2}, item: DEFAULT_ITEMS.livingroom[0][1]}, 
-      {pos:{x:1, y:0}, item: DEFAULT_ITEMS.livingroom[1][0]}
-   ]
-}
-
-const LOCATION_DECORATION_MAPPINGS = {
-   kitchen: [],
-   bathroom: [],
-   livingroom: []
+      {pos:{x:1, y:0}, item: DEFAULT_ITEMS.livingroom[1][0]}]
 }
 
 const KITCHEN_SIZE: Viewport = {width: 4, height: 2}
@@ -63,10 +57,10 @@ const HOME_SIZE: Viewport = {width: 11, height: 8}
 /**
  * DEFAULT field matrices.
  */
-const KITCHEN_FIELD_MATRIX: Field[][] = createFieldMatrix(KITCHEN_SIZE, LOCATION_ITEM_MAPPINGS.kitchen, LOCATION_DECORATION_MAPPINGS.kitchen)
-const BATHROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BATHROOM_SIZE, LOCATION_ITEM_MAPPINGS.bathroom, LOCATION_DECORATION_MAPPINGS.bathroom)
-const LIVINGROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(LIVINGROOM_SIZE, LOCATION_ITEM_MAPPINGS.livingroom, LOCATION_DECORATION_MAPPINGS.livingroom)
-const BEDROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BEDROOM_SIZE, [], [])
+const KITCHEN_FIELD_MATRIX: Field[][] = createFieldMatrix(KITCHEN_SIZE, LOCATION_ITEM_MAPPINGS.kitchen, DEFAULT_DECORATIONS.kitchen)
+const BATHROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BATHROOM_SIZE, LOCATION_ITEM_MAPPINGS.bathroom, DEFAULT_DECORATIONS.bathroom)
+const LIVINGROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(LIVINGROOM_SIZE, LOCATION_ITEM_MAPPINGS.livingroom, DEFAULT_DECORATIONS.livingroom)
+const BEDROOM_FIELD_MATRIX: Field[][] = createFieldMatrix(BEDROOM_SIZE, [], DEFAULT_DECORATIONS.bedroom)
 const HOME_FIELD_MATRIX: Field[][] = createFieldMatrix(HOME_SIZE, [], [])
 
 /**

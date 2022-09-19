@@ -9,6 +9,12 @@ export class Decoration {
      id: string
      name: string
      img: string
+
+     constructor(id: string, name: string, img: string) {
+        this.id = id
+        this.name = name
+        this.img = img
+     }
 }
 
 export class Field {
@@ -69,7 +75,7 @@ export function createFieldMatrix(
     console.log("items: ", items, " decorations: ", decorations)
     items.forEach(item => {
         console.log("item: ", item)
-        let { x, y } = item.pos
+        let {x, y} = item.pos
         fields[y][x] = new Field(item.pos, item.item)
     });
     decorations.forEach(deco => {

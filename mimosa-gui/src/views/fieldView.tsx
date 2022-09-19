@@ -57,14 +57,15 @@ const FieldView: Component<FieldViewProps> = ( props ) => {
         <div class="field">
             <div class="fieldContent">
                 { () => {
-                    // console.log("Field ", field, " object on: ", field.object_on as Item)
+                    console.log("Field ", props.field, " object on: ", props.field.object_on as Item)
                     if (props.field.object_on instanceof Item) {
                         let item_on: Item = props.field.object_on as Item
                         return <ItemOnField item={ item_on } />
                     } else if(props.field.object_on instanceof Decoration) {
+                        console.log("deco on field: ", props.field)
                         let deco_on: Decoration = props.field.object_on as Decoration
                         let img_alt: string = deco_on.name
-                        return <img src={deco_on.img} class="w-full" style="padding: 0 30%" alt={img_alt} />
+                        return <img src={deco_on.img} class="w-full decoration" style="padding: 0 30%; opacity: 0.2;" alt={img_alt} />
                     }
                 }}
             </div>
