@@ -13,7 +13,7 @@ The locations are planned to be created by the user in an easily understable way
 Make sure you have [node.js](https://nodejs.org/en/) installed.
 
 ## Documentation
-An extended documentation in german language can be found on the [Mimosa Website](www.mimo-sa.de).
+An extended documentation in german language can be found on the [Mimosa Website](https://www.mimo-sa.org).
 
 ## Installation
 ```
