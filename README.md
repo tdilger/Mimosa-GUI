@@ -1,6 +1,8 @@
 # Mimosa-GUI
 *This project is currently under development.*  
 
+<img src="docs/images/mimosa-logo_full.webp" alt="Mimosa Logo" style="width: 24em;" />
+
 ## Introduction
 Web GUI for a Multimodal Smart Home Assistance System.  
 With the Mimosa GUI you can easily access Smart Items like lights and power sockets in different locations of your Smart Home.  
